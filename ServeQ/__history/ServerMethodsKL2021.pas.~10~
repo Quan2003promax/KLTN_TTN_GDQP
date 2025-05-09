@@ -1,0 +1,67 @@
+﻿unit ServerMethodsKL2021;
+
+interface
+
+uses System.SysUtils, System.Classes, System.Json,
+    DataSnap.DSProviderDataModuleAdapter,
+    Datasnap.DSServer, Datasnap.DSAuth, Datasnap.Provider, Data.DB,
+  Data.Win.ADODB;
+
+type
+  TServerMethods1 = class(TDSServerModule)
+    ADO1: TADOConnection;
+    ADODataSet1: TADODataSet;
+    DataSetProviderGV: TDataSetProvider;
+    ADO2: TADOConnection;
+    ADODataSet2: TADODataSet;
+    DataSetProviderSV: TDataSetProvider;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function EchoString(Value: string): string;
+    function ReverseString(Value: string): string;
+  end;
+
+implementation
+
+
+{$R *.dfm}
+
+
+uses System.StrUtils;
+
+function TServerMethods1.EchoString(Value: string): string;
+begin
+  Result := Value;
+end;
+
+function TServerMethods1.ReverseString(Value: string): string;
+begin
+  Result := System.StrUtils.ReverseString(Value);
+end;
+function TServerMethods1.GetStudentInfo(const MaSV: string): TJSONObject;
+var
+  JSON: TJSONObject;
+begin
+  JSON := TJSONObject.Create;
+  ADOQuery1.Close;
+  ADOQuery1.SQL.Text := 'SELECT MaSV, HoLot, Ten, TenLop FROM HSSV WHERE MaSV = :MaSV';
+  ADOQuery1.Parameters.ParamByName('MaSV').Value := MaSV;
+  ADOQuery1.Open;
+
+  if not ADOQuery1.IsEmpty then
+  begin
+    JSON.AddPair('MaSV', ADOQuery1.FieldByName('MaSV').AsString);
+    JSON.AddPair('HoLot', ADOQuery1.FieldByName('HoLot').AsString);
+    JSON.AddPair('Ten', ADOQuery1.FieldByName('Ten').AsString);
+    JSON.AddPair('TenLop', ADOQuery1.FieldByName('TenLop').AsString);
+  end
+  else
+    JSON.AddPair('error', 'Không tìm thấy sinh viên');
+
+  Result := JSON;
+end;
+
+end.
+

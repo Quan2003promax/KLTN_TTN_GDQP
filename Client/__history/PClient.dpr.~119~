@@ -1,0 +1,51 @@
+﻿program PClient;
+
+uses
+  Vcl.Forms,
+  Vcl.Dialogs,
+  UClient in 'UClient.pas' {Form1},
+  Unit1 in 'Unit1.pas',
+  UHeThong in 'C:\KLTN\HDKhoaLuanK2021\UHeThong.pas',
+  ui_login in 'ui_login.pas' {TTFormLG};
+
+{$R *.res}
+
+var
+  LoginForm: TTformLG;
+  LoginSuccess: Boolean;
+  IsAdmin: Boolean;
+  LoggedMaSV: string;
+  LoggedRole: string;
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+
+
+  while True do
+  begin
+    IsAdmin := False;
+    LoggedMaSV := '';
+
+    LoginForm := TTformLG.Create(nil);
+    try
+      LoginForm.IsAdmin := @IsAdmin;
+      LoginForm.LoggedMaSV := @LoggedMaSV;
+      LoginSuccess := LoginForm.ShowModal = 1;
+    finally
+      LoginForm.Free;
+    end;
+
+    if LoginSuccess then
+    begin
+    Application.CreateForm(TForm1, Form1);
+    Form1.IsAdmin := IsAdmin;
+    Form1.LoggedMaSV := LoggedMaSV;
+    Application.Run;
+
+    if Application.Terminated then Break;
+    end
+    else
+      Break;
+  end;
+end.
+

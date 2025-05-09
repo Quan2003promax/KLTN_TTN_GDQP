@@ -1,0 +1,71 @@
+object WebModule1: TWebModule1
+  OldCreateOrder = False
+  Actions = <
+    item
+      Default = True
+      Name = 'DefaultHandler'
+      PathInfo = '/'
+      OnAction = WebModule1DefaultHandlerAction
+    end
+    item
+      Name = 'WebModule1KetQuaAction'
+      PathInfo = '/ketqua'
+      OnAction = WebModule1WebModule1KetQuaActionAction
+    end
+    item
+      Name = 'WebModule1ChungChiAction'
+      PathInfo = '/chungchi'
+      OnAction = WebModule1WebModule1ChungChiActionAction
+    end
+    item
+      Name = 'WebQR'
+      PathInfo = '/donate'
+      OnAction = WebModule1WebQRAction
+    end>
+  BeforeDispatch = WebModuleBeforeDispatch
+  Height = 229
+  Width = 415
+  object SQLConnection1: TSQLConnection
+    ConnectionName = 'DataSnapCONNECTION'
+    DriverName = 'DataSnap'
+    Params.Strings = (
+      'DriverUnit=Data.DBXDataSnap'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXClientDriverLoader,Borland' +
+        '.Data.DbxClientDriver,Version=24.0.0.0,Culture=neutral,PublicKey' +
+        'Token=91d62ebb5b0d1b1b'
+      'DriverName=DataSnap'
+      'HostName=localhost'
+      'port=333'
+      'CommunicationProtocol=tcp/ip'
+      'DatasnapContext=datasnap/'
+      'DSAuthenticationUser=UserKL2021'
+      'DSAuthenticationPassword=PassKL2021'
+      'Filters={}')
+    Connected = True
+    Left = 151
+    Top = 16
+    UniqueId = '{787E1BA3-DE3D-4828-8432-75660CD77C80}'
+  end
+  object DSProviderConnection1: TDSProviderConnection
+    ServerClassName = 'TServerMethods1'
+    Connected = True
+    SQLConnection = SQLConnection1
+    Left = 255
+    Top = 16
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    CommandText = 'Select * From HSSV'
+    Params = <>
+    ProviderName = 'DataSetProviderGV'
+    RemoteServer = DSProviderConnection1
+    Left = 355
+    Top = 16
+  end
+  object DataSource1: TDataSource
+    DataSet = ClientDataSet1
+    Left = 359
+    Top = 88
+  end
+end

@@ -1,0 +1,122 @@
+﻿unit ui_login;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TTformLG = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Image2: TImage;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    BitBtn1: TBitBtn;
+    Image3: TImage;
+    Label3: TLabel;
+    Label4: TLabel;
+    Image4: TImage;
+    Image5: TImage;
+    procedure BitBtn1Click(Sender: TObject);
+    procedure Image5Click(Sender: TObject);
+  private
+    { Private declarations }
+ public
+    { Public declarations }
+   IsAdmin: PBoolean;
+    LoggedMaSV: PString;
+  end;
+
+var
+  TformLG: TTformLG;
+implementation
+ Uses UClient;
+{$R *.dfm}
+
+procedure TTFormLG.BitBtn1Click(Sender: TObject);
+var
+  inputMaSV, inputIDCB, Role: string;
+  tempForm: TForm1;
+begin
+  if (Edit1.Text = 'khoaluan21') and (Edit2.Text = 'khoaluan21') then
+  begin
+    inputIDCB := InputBox('Xác thực vai trò', 'Nhập IDCB :', '');
+    if inputIDCB = '' then
+    begin
+      ShowMessage('Bạn phải nhập IDCB!');
+      Exit;
+    end;
+
+    // Nếu IDCB là 'admin' thì gán luôn quyền admin không cần truy vấn DB
+    if LowerCase(inputIDCB) = 'admin' then
+    begin
+      Role := 'admin';
+    end
+    else
+    begin
+      tempForm := TForm1.Create(nil);  // dùng tạm để truy vấn
+      try
+        tempForm.Q.Close;
+        tempForm.Q.CommandText :=
+          'SELECT DiemBP, KhaoThi, DaoTao FROM CBSoYeu WHERE IDCB = :ID';
+        tempForm.Q.ParamByName('ID').AsString := inputIDCB;
+        tempForm.Q.Open;
+
+        if tempForm.Q.IsEmpty then
+        begin
+          ShowMessage('IDCB không tồn tại trong hệ thống!');
+          Exit;
+        end;
+
+        if tempForm.Q.FieldByName('DiemBP').AsBoolean then
+          Role := 'gvbp'
+        else if tempForm.Q.FieldByName('KhaoThi').AsBoolean then
+          Role := 'kt'
+        else if tempForm.Q.FieldByName('DaoTao').AsBoolean then
+          Role := 'dt'
+        else
+        begin
+          ShowMessage('IDCB này không thuộc bộ phận nào được phân quyền!');
+          Exit;
+        end;
+
+      finally
+        tempForm.Free;
+      end;
+    end;
+
+    Form1 := TForm1.CreateWithLogin(Application, True, Role);
+    Form1.Show;
+    Self.Hide;
+  end
+  else if (Edit1.Text = 'sinhvien21') and (Edit2.Text = '1') then
+  begin
+    inputMaSV := InputBox('Xác thực sinh viên', 'Nhập mã sinh viên của bạn:', '');
+    if inputMaSV = '' then
+    begin
+      ShowMessage('Bạn phải nhập mã sinh viên!');
+      Exit;
+    end;
+
+    Form1 := TForm1.CreateWithLogin(Application, False, inputMaSV);
+    Form1.Show;
+    Self.Hide;
+  end
+  else
+    ShowMessage('Sai thông tin đăng nhập!');
+end;
+
+
+procedure TTformLG.Image5Click(Sender: TObject);
+begin
+  close;
+end;
+
+end.
+

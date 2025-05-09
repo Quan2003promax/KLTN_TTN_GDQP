@@ -1,0 +1,113 @@
+﻿unit PClientmb;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Objects, FMX.Controls.Presentation, FMX.Edit, MbClient; // Đã thêm UFormMain
+
+type
+  TFormLGMB = class(TForm)
+    Label1: TLabel;
+    Image1: TImage;
+    Panel1: TPanel;
+    Panel3: TPanel;
+    Panel2: TPanel;
+    Label2: TLabel;
+    Panel4: TPanel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Button1: TButton;
+    Edit3: TEdit;
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
+    procedure RadioButton1Change(Sender: TObject);
+    procedure RadioButton2Change(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormLGMB: TFormLGMB;
+
+implementation
+
+{$R *.fmx}
+{$R *.LgXhdpiPh.fmx ANDROID}
+{$R *.LgXhdpiTb.fmx ANDROID}
+
+procedure TFormLGMB.Button1Click(Sender: TObject);
+var
+  MaSV, Username, Password: string;
+begin
+  Username := Edit1.Text;
+  Password := Edit3.Text;
+
+  if RadioButton1.IsChecked then  // Sinh viên
+  begin
+    MaSV := Edit2.Text;
+    if (Username = 'sinhvien21') and (Password = '1') then
+    begin
+      if MaSV = '' then
+      begin
+        ShowMessage('Vui lòng nhập Mã SV!');
+        Exit;
+      end;
+      ShowMessage('Sinh viên đăng nhập thành công: ' + MaSV);
+      Form1 := TForm1.CreateWithMaSV(Self, MaSV);  // ✅ SỬA Ở ĐÂY
+      Form1.Show;
+      Self.Hide;
+    end
+    else
+      ShowMessage('Sai thông tin đăng nhập sinh viên!');
+  end
+  else if RadioButton2.IsChecked then  // Giảng viên
+begin
+  if (Username = 'khoaluan21') and (Password = 'khoaluan21') then
+  begin
+    var inputIDCB := InputBox('Xác thực giảng viên', 'Nhập IDCB:', '');
+    if inputIDCB = '' then
+    begin
+      ShowMessage('Bạn phải nhập IDCB!');
+      Exit;
+    end;
+
+    ShowMessage('Đăng nhập giảng viên thành công! IDCB: ' + inputIDCB);
+    Form1 := TForm1.CreateWithMaGV(Self, inputIDCB);
+    Form1.Show;
+    Self.Hide;
+  end
+  else
+    ShowMessage('Sai thông tin đăng nhập giảng viên!');
+end;
+
+
+
+procedure TFormLGMB.FormCreate(Sender: TObject);
+begin
+  Edit2.Visible := False;
+  Edit2.Enabled := False;
+  Edit2.HitTest := False;
+end;
+
+procedure TFormLGMB.RadioButton1Change(Sender: TObject);
+begin
+  Edit2.Visible := RadioButton1.IsChecked;
+  Edit2.Enabled := RadioButton1.IsChecked;
+  Edit2.HitTest := RadioButton1.IsChecked;
+end;
+
+procedure TFormLGMB.RadioButton2Change(Sender: TObject);
+begin
+  Edit2.Visible := not RadioButton2.IsChecked;
+  Edit2.Enabled := not RadioButton2.IsChecked;
+  Edit2.HitTest := not RadioButton2.IsChecked;
+end;
+
+end.
+

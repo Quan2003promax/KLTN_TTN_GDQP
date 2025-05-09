@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/03/18 18:18:13.000.504,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/03/18 18:18:29.000.533,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\UClient.pas</Transaction>
+    <Transaction>2025/03/18 18:18:29.000.533,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\UClient.dfm</Transaction>
+    <Transaction>2025/03/18 18:18:40.000.206,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\PClient.dproj</Transaction>
+    <Transaction>2025/03/18 18:35:17.000.091,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\Unit1.pas</Transaction>
+    <Transaction>2025/03/18 18:49:39.000.926,=C:\KLTN\HDKhoaLuanK2021\UHeThong.pas</Transaction>
+    <Transaction>2025/04/13 21:23:01.000.856,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\Unit2.pas</Transaction>
+    <Transaction>2025/04/13 22:54:00.000.121,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\ui_login.pas</Transaction>
+  </Transactions>
+</BorlandProject>

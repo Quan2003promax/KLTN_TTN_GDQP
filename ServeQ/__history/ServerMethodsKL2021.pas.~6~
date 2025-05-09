@@ -1,0 +1,49 @@
+﻿unit ServerMethodsKL2021;
+
+interface
+
+uses System.SysUtils, System.Classes, System.Json,
+    DataSnap.DSProviderDataModuleAdapter,
+    Datasnap.DSServer, Datasnap.DSAuth, Datasnap.Provider, Data.DB,
+  Data.Win.ADODB;
+
+type
+  TServerMethods1 = class(TDSServerModule)
+    ADO1: TADOConnection;
+    ADODataSet1: TADODataSet;
+    DataSetProviderGV: TDataSetProvider;
+    ADO2: TADOConnection;
+    ADODataSet2: TADODataSet;
+    DataSetProviderSV: TDataSetProvider;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function EchoString(Value: string): string;
+    function ReverseString(Value: string): string;
+  end;
+
+implementation
+
+
+{$R *.dfm}
+
+
+uses System.StrUtils,UServer;
+
+function TServerMethods1.EchoString(Value: string): string;
+begin
+  if Assigned(Form1) then
+    Form1.Memo1.Lines.Add('🟢 Client gọi EchoString lúc: ' + FormatDateTime('dd/MM/yyyy hh:nn:ss', Now));
+  Result := Value;
+end;
+
+function TServerMethods1.ReverseString(Value: string): string;
+begin
+  if Assigned(Form1) then
+    Form1.Memo1.Lines.Add('🟢 Client gọi ReverseString lúc: ' + FormatDateTime('dd/MM/yyyy hh:nn:ss', Now));
+  Result := System.StrUtils.ReverseString(Value);
+end;
+
+end.
+

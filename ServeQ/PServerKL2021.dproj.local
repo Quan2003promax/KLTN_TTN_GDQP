@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/03/18 18:01:43.000.551,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/03/18 18:01:44.000.109,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2025/03/18 18:01:46.000.591,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2025/03/18 18:02:08.000.436,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServeQ\UServer.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/03/18 18:02:08.000.436,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServeQ\UServer.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2025/03/18 18:02:59.000.642,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServeQ\ServerMethodsKL2021.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.dfm</Transaction>
+    <Transaction>2025/03/18 18:02:59.000.642,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServeQ\ServerMethodsKL2021.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2025/03/18 18:03:07.000.694,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServeQ\ServerContainerKL2021.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2025/03/18 18:03:07.000.694,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServeQ\ServerContainerKL2021.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.dfm</Transaction>
+    <Transaction>2025/03/18 18:15:30.000.710,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\ServeQ\PServerKL2021.dproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

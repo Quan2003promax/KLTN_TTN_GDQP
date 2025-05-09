@@ -1,0 +1,2 @@
+[24/04/2025 02:49:00] gvbp cập nhật: Mã SV=21103020 | Lớp=211031 Công nghệ thông tin K21A (9.2.10,Chiều) | Tên HP=Cơ sở dữ liệu (2.0/1.0) | Điểm cũ=0 | Điểm mới=8 | USBP='24000411' | KeHoachID=54909
+[24/04/2025 02:50:12] gvbp cập nhật: Mã SV=21103020 | Lớp=211031 Công nghệ thông tin K21A (9.2.10,Chiều) | Tên HP=Cơ sở dữ liệu (2.0/1.0) | Điểm cũ=8 | Điểm mới=0 | USBP='24000411' | KeHoachID=54909

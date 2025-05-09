@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/04/20 00:51:57.000.171,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
+    <Transaction>2025/04/20 00:51:57.000.774,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2025/04/20 00:52:51.000.195,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\Website\FormUnit1.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\FormUnit1.pas</Transaction>
+    <Transaction>2025/04/20 00:52:51.000.195,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\Website\FormUnit1.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\FormUnit1.dfm</Transaction>
+    <Transaction>2025/04/20 01:01:41.000.051,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/04/20 01:02:00.000.123,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/04/20 01:02:09.000.774,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\Website\UnitSV.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/04/20 01:06:27.000.096,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\Website\Website1.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.dfm</Transaction>
+    <Transaction>2025/04/20 01:06:27.000.096,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\Website\Website1.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\WebModuleUnit1.pas</Transaction>
+    <Transaction>2025/04/20 01:39:33.000.881,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\WebsiteGDQP\PWebSV.dproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

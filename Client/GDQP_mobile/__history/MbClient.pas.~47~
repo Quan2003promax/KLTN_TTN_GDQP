@@ -1,0 +1,137 @@
+﻿unit MbClient;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Objects,
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Layouts, FireDAC.Comp.Client,
+  Data.DB,  System.JSON, System.Net.HttpClient,
+  System.Net.URLClient, System.Net.HttpClientComponent, Data.DBXDataSnap,
+  Data.DBXCommon, IPPeerClient, Datasnap.DBClient, Datasnap.DSConnect,
+  Data.SqlExpr;
+
+type
+  TForm1 = class(TForm)
+    Layout1: TLayout;
+    GridPanelLayout1: TGridPanelLayout;
+    Layout2: TLayout;
+    Layout3: TLayout;
+    Layout4: TLayout;
+    Layout5: TLayout;
+    Layout6: TLayout;
+    Label1: TLabel;
+    Label2: TLabel;
+    Image1: TImage;
+    Label4: TLabel;
+    Image2: TImage;
+    Label5: TLabel;
+    Image3: TImage;
+    Label6: TLabel;
+    Image4: TImage;
+    Label7: TLabel;
+    SQLConnection1: TSQLConnection;
+    DSProviderConnection1: TDSProviderConnection;
+    ClientDataSet1: TClientDataSet;
+    DataSource1: TDataSource;
+    Label3: TLabel;
+    procedure LoadStudentInfo(const maSV: string);
+     procedure LoadTeacherInfo(const AMaGV: string);
+procedure FormCreate(Sender: TObject);
+  private
+    FMaSV: string;
+  public
+    constructor CreateWithMaSV(AOwner: TComponent; const AMaSV: string);
+  constructor CreateWithMaGV(AOwner: TComponent; const AMaGV: string);
+end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+uses PClientmb;
+
+{$R *.fmx}
+
+constructor TForm1.CreateWithMaSV(AOwner: TComponent; const AMaSV: string);
+begin
+  inherited Create(AOwner);
+  FMaSV := AMaSV;
+  LoadStudentInfo(FMaSV);
+end;
+ constructor TForm1.CreateWithMaGV(AOwner: TComponent; const AMaGV: string);
+begin
+  inherited Create(AOwner);
+  LoadTeacherInfo(AMaGV);
+end;
+
+procedure TForm1.LoadTeacherInfo(const MaGV: string);
+begin
+  try
+    ClientDataSet1.Close;
+    ClientDataSet1.CommandText :=
+      'SELECT IDCB, holot, ten FROM CBSoyeu WHERE IDCB = ''' +AMaGV + '''';
+    ClientDataSet1.Open;
+
+    if not ClientDataSet1.IsEmpty then
+    begin
+      Label1.Text := ClientDataSet1.FieldByName('IDCB').AsString;
+      Label2.Text := ClientDataSet1.FieldByName('holot').AsString + ' ' +
+                     ClientDataSet1.FieldByName('ten').AsString;
+      Label3.Text := 'Giảng viên';
+    end
+    else
+      ShowMessage('Không tìm thấy giảng viên!');
+  except
+    on E: Exception do
+      ShowMessage('Lỗi khi tải dữ liệu giảng viên: ' + E.Message);
+  end;
+end;
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+ SQLConnection1.Connected := False;
+  SQLConnection1.Params.Values['HostName'] := 'localhost';
+  SQLConnection1.Params.Values['Port'] := '333';
+  SQLConnection1.Params.Values['DSAuthenticationUser'] := 'UserKL2021';
+  SQLConnection1.Params.Values['DSAuthenticationPassword'] := 'PassKL2021';
+  try
+    SQLConnection1.Connected := True;
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Không thể kết nối đến máy chủ! Kiểm tra IP hoặc kết nối Internet.' + sLineBreak + E.Message);
+      Halt;
+    end;
+  end;
+end;
+
+procedure TForm1.LoadStudentInfo(const maSV: string);
+begin
+  try
+    ClientDataSet1.Close;
+    ClientDataSet1.CommandText :=
+      'SELECT H.MaSV, H.HoLot, H.Ten, L.TenLop ' +
+      'FROM HSSV H ' +
+      'JOIN LopHoc L ON H.MaLop = L.MaLop ' +
+      'WHERE H.MaSV = ''' + maSV + '''';
+    ClientDataSet1.Open;
+    if not ClientDataSet1.IsEmpty then
+    begin
+      Label1.Text := ClientDataSet1.FieldByName('MaSV').AsString;
+      Label2.Text := ClientDataSet1.FieldByName('HoLot').AsString + ' ' +
+                     ClientDataSet1.FieldByName('Ten').AsString;
+      Label3.Text := ClientDataSet1.FieldByName('TenLop').AsString;
+    end
+    else
+      ShowMessage('Không tìm thấy sinh viên!');
+  except
+    on E: Exception do
+      ShowMessage('Lỗi khi tải dữ liệu: ' + E.Message);
+  end;
+end;
+
+end.
+

@@ -1,0 +1,2 @@
+[19/04/2025 15:31:13] kt cập nhật: MaSV=21103006 | TenHP=Chủ nghĩa XH KH (2.0/0.0) | DiemThi2=10 | US2='10' | KeHoachID=58799
+[19/04/2025 15:31:30] kt cập nhật: MaSV=21103006 | TenHP=Chủ nghĩa XH KH (2.0/0.0) | DiemThi2=NULL | US2=NULL | KeHoachID=58799

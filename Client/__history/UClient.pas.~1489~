@@ -1,0 +1,2640 @@
+﻿unit UClient;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient,
+  VclTee.TeeGDIPlus, Data.DBXDataSnap, Data.DBXCommon, IPPeerClient,
+  Vcl.StdCtrls, Vcl.ExtCtrls, Data.SqlExpr, Datasnap.DSConnect, Vcl.Buttons,
+  VCLTee.TeEngine, VCLTee.TeeProcs, VCLTee.Chart, Vcl.DBCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.ComCtrls,
+  Data.Win.ADODB,
+  System.Generics.Collections, ShellAPI, IOUtils, ComObj,JPEG,Printers ,Math,
+  Vcl.Menus, VCLTee.TeeData, FireDAC.VCLUI.Controls, VCLTee.Series,
+  Vcl.Imaging.pngimage,DateUtils;
+
+type
+  TForm1 = class(TForm)
+    DSProviderConnection1: TDSProviderConnection;
+    ClientDataSet1: TClientDataSet;
+    DataSource1: TDataSource;
+    SQLConnection1: TSQLConnection;
+    Q: TClientDataSet;
+    Panel1: TPanel;
+    Splitter1: TSplitter;
+    Label1: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    GroupBox1: TGroupBox;
+    Label12: TLabel;
+    Label13: TLabel;
+    lblHocKy: TLabel;
+    lblNamHoc: TLabel;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    DBCheckBox2: TDBCheckBox;
+    ClientDataSet2: TClientDataSet;
+    DataSource2: TDataSource;
+    SpeedButton8: TSpeedButton;
+    Panel5: TPanel;
+    SpeedButton9: TSpeedButton;
+    Panel6: TPanel;
+    Label18: TLabel;
+    Timer1: TTimer;
+    Label19: TLabel;
+    Panel7: TPanel;
+    SpeedButton10: TSpeedButton;
+    Panel8: TPanel;
+    SpeedButton4: TSpeedButton;
+    SaveDialog1: TSaveDialog;
+    PageControl1: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet10: TTabSheet;
+    TabSheet3: TTabSheet;
+    TabSheet11: TTabSheet;
+    TabSheet5: TTabSheet;
+    PageControl2: TPageControl;
+    TabSheet6: TTabSheet;
+    Panel4: TPanel;
+    BitBtn3: TBitBtn;
+    BitBtn4: TBitBtn;
+    BitBtn5: TBitBtn;
+    BitBtn6: TBitBtn;
+    DBGrid2: TDBGrid;
+    TabSheet7: TTabSheet;
+    Panel3: TPanel;
+    Label17: TLabel;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    DBGrid1: TDBGrid;
+    TabSheet8: TTabSheet;
+    Panel9: TPanel;
+    Image1: TImage;
+    Panel10: TPanel;
+    Label20: TLabel;
+    BitBtn7: TBitBtn;
+    BitBtn8: TBitBtn;
+    Button1: TButton;
+    Panel2: TPanel;
+    Label14: TLabel;
+    Label16: TLabel;
+    ComboBox2: TComboBox;
+    ComboBox1: TComboBox;
+    ClientDataSet3: TClientDataSet;
+    DataSource3: TDataSource;
+    ClientDataSet4: TClientDataSet;
+    ClientDataSet5: TClientDataSet;
+    ClientDataSet6: TClientDataSet;
+    DataSource4: TDataSource;
+    DataSource5: TDataSource;
+    DataSource6: TDataSource;
+    Panel13: TPanel;
+    Label15: TLabel;
+    TreeView1: TTreeView;
+    Panel11: TPanel;
+    Panel12: TPanel;
+    Panel14: TPanel;
+    Panel15: TPanel;
+    DBGrid3: TDBGrid;
+    Panel16: TPanel;
+    Panel17: TPanel;
+    Panel18: TPanel;
+    Panel19: TPanel;
+    Panel20: TPanel;
+    Panel21: TPanel;
+    DBGrid4: TDBGrid;
+    Chart1: TChart;
+    Panel22: TPanel;
+    Panel23: TPanel;
+    ComboBox3: TComboBox;
+    Label21: TLabel;
+    SpeedButton5: TSpeedButton;
+    DBCheckBox1: TDBCheckBox;
+    DBCheckBox3: TDBCheckBox;
+    Label22: TLabel;
+    Label23: TLabel;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Label24: TLabel;
+    Label25: TLabel;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
+    SpeedButton6: TSpeedButton;
+    Panel24: TPanel;
+    SpeedButton11: TSpeedButton;
+    PrintDialog1: TPrintDialog;
+    Series1: TBarSeries;
+    Panel25: TPanel;
+    Panel26: TPanel;
+    Label29: TLabel;
+    DBGrid5: TDBGrid;
+    Panel27: TPanel;
+    Label30: TLabel;
+    DBGrid6: TDBGrid;
+    Panel28: TPanel;
+    Panel29: TPanel;
+    Label31: TLabel;
+    Panel30: TPanel;
+    Panel31: TPanel;
+    Label32: TLabel;
+    DBGrid7: TDBGrid;
+    DBCheckBox4: TDBCheckBox;
+    DBCheckBox5: TDBCheckBox;
+    Panel32: TPanel;
+    Panel33: TPanel;
+    Label33: TLabel;
+    Panel34: TPanel;
+    DBGrid8: TDBGrid;
+    Panel35: TPanel;
+    Panel36: TPanel;
+    Panel37: TPanel;
+    Label34: TLabel;
+    Label35: TLabel;
+    Label36: TLabel;
+    Label37: TLabel;
+    Label38: TLabel;
+    Edit6: TEdit;
+    Edit7: TEdit;
+    Edit8: TEdit;
+    Edit9: TEdit;
+    Edit10: TEdit;
+    Panel38: TPanel;
+    Label39: TLabel;
+    Panel39: TPanel;
+    SpeedButton12: TSpeedButton;
+    SpeedButton13: TSpeedButton;
+    ComboBox4: TComboBox;
+    Panel40: TPanel;
+    Chart2: TChart;
+    BarSeries1: TBarSeries;
+    TreeView2: TTreeView;
+    ClientDataSet7: TClientDataSet;
+    DataSource7: TDataSource;
+    ClientDataSet8: TClientDataSet;
+    DataSource8: TDataSource;
+    DBCheckBox6: TDBCheckBox;
+    Panel41: TPanel;
+    Panel42: TPanel;
+    Label40: TLabel;
+    DBGrid9: TDBGrid;
+    Panel43: TPanel;
+    Panel44: TPanel;
+    Label41: TLabel;
+    DBGrid10: TDBGrid;
+    Image2: TImage;
+    TabSheet2: TTabSheet;
+    Panel45: TPanel;
+    Panel46: TPanel;
+    Panel47: TPanel;
+    Label42: TLabel;
+    TreeView3: TTreeView;
+    Panel48: TPanel;
+    Label43: TLabel;
+    DBGrid11: TDBGrid;
+    Panel49: TPanel;
+    Panel50: TPanel;
+    Label44: TLabel;
+    ClientDataSet9: TClientDataSet;
+    DataSource9: TDataSource;
+    ClientDataSet10: TClientDataSet;
+    DataSource10: TDataSource;
+    Panel51: TPanel;
+    DBGrid12: TDBGrid;
+    Panel52: TPanel;
+    Panel53: TPanel;
+    Label45: TLabel;
+    Label46: TLabel;
+    Edit11: TEdit;
+    Edit12: TEdit;
+    Panel54: TPanel;
+    Panel55: TPanel;
+    SpeedButton15: TSpeedButton;
+    SpeedButton16: TSpeedButton;
+    ComboBox5: TComboBox;
+    Panel56: TPanel;
+    Chart3: TChart;
+    BarSeries2: TBarSeries;
+    DBCheckBox7: TDBCheckBox;
+    Label50: TLabel;
+    SpeedButton7: TSpeedButton;
+    SpeedButton14: TSpeedButton;
+    SpeedButton17: TSpeedButton;
+    procedure FormCreate(Sender: TObject);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure ClientDataSet1AfterPost(DataSet: TDataSet);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
+    procedure LoadHocKyNamHoc;
+    procedure LoadKhoa;
+    procedure LoadDanhSachLop_Chinh;
+    procedure LoadDanhSachLop_Phu;
+    procedure LoadDanhSachLop_BP;
+    procedure LoadLop(MaKhoa: Integer);
+    procedure ExportToExcel;
+   procedure PrintDBGrid(Grid: TDBGrid); overload;
+
+    procedure btnTaiAnhClick(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
+    procedure BitBtn4Click(Sender: TObject);
+    procedure BitBtn5Click(Sender: TObject);
+    procedure BitBtn6Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+    procedure SpeedButton8Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure SpeedButton9Click(Sender: TObject);
+    procedure SpeedButton10Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure BitBtn7Click(Sender: TObject);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure TreeView1Click(Sender: TObject);
+    procedure DBGrid3DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid3CellClick(Column: TColumn);
+    procedure DBGrid4DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure ComboBox3Change(Sender: TObject);
+    procedure SpeedButton11Click(Sender: TObject);
+    procedure DBGrid5DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid5CellClick(Column: TColumn);
+    procedure DBGrid6DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure TreeView2Click(Sender: TObject);
+    procedure DBGrid7DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid7CellClick(Column: TColumn);
+    procedure DBGrid9DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid10DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid9CellClick(Column: TColumn);
+    procedure SpeedButton12Click(Sender: TObject);
+    procedure SpeedButton13Click(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure TreeView3Click(Sender: TObject);
+    procedure DBGrid11DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure DBGrid11CellClick(Column: TColumn);
+    procedure DBGrid12DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure ClientDataSet10AfterPost(DataSet: TDataSet);
+    procedure SpeedButton16Click(Sender: TObject);
+    procedure SpeedButton15Click(Sender: TObject);
+    procedure SpeedButton7Click(Sender: TObject);
+    procedure ClientDataSet4AfterPost(DataSet: TDataSet);
+    procedure ClientDataSet7AfterPost(DataSet: TDataSet);
+    procedure SpeedButton14Click(Sender: TObject);
+    procedure SpeedButton17Click(Sender: TObject);
+ 
+
+  private
+  HocKyIDs: TList<Integer>;
+  CurrentSide: Integer;
+  CurrentIndex: Integer;
+  TotalRows: Integer;
+  public
+  IsAdmin: Boolean;
+  LoggedMaSV: string;
+  constructor CreateWithLogin(AOwner: TComponent; AIsAdmin: Boolean; ALoggedMaSV: string);
+  end;
+
+var
+  Form1: TForm1;
+  ZoomFactor: Double = 1.0;
+  IsDrawing: Boolean;
+  LastPoint: TPoint;
+
+implementation
+Uses UHeThong,ui_login;
+const
+  KhoaCount = 8;
+  KhoaTen: array[1..KhoaCount] of string = (
+    'Khoa Y Dược',
+    'Khoa Nông lâm Nghiệp',
+    'Khoa Kinh Tế',
+    'Khoa Sư Phạm',
+    'Khoa Lý luận Chính trị',
+    'Khoa Ngoại Ngữ',
+    'Khoa Chăn nuôi Thú Y',
+    'Khoa KHTN&CN'
+  );
+
+
+{$R *.dfm}
+{$R GDQP/QChoatdong.res}
+{$R GDQP/QDQLSV.res}
+{$R GDQP/hdsd.res}
+{$R GDQP/chungchi.res}
+
+constructor TForm1.CreateWithLogin(AOwner: TComponent; AIsAdmin: Boolean; ALoggedMaSV: string);
+begin
+  inherited Create(AOwner);
+  IsAdmin := AIsAdmin;
+  LoggedMaSV := ALoggedMaSV;
+end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+          Label19.Caption := FormatDateTime('dd/mm/yyyy hh:nn:ss AM/PM', Now);
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+var
+  i: Integer;
+begin
+  WindowState := wsMaximized;
+  SQLConnection1.Connected := False;
+  SQLConnection1.Params.Values['HostName'] := 'localhost';
+  SQLConnection1.Params.Values['Port'] := '333';
+  SQLConnection1.Params.Values['DSAuthenticationUser'] := 'UserKL2021';
+  SQLConnection1.Params.Values['DSAuthenticationPassword'] := 'PassKL2021';
+  try
+    SQLConnection1.Connected := True;
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Không thể kết nối đến máy chủ! Kiểm tra IP hoặc kết nối Internet.' + sLineBreak + E.Message);
+      Halt;
+    end;
+  end;
+
+  HocKyIDs := TList<Integer>.Create;
+  Q.Close;
+  Q.CommandText := 'SELECT ID FROM HocKy_NamHoc ORDER BY ID';
+  Q.Open;
+
+  while not Q.Eof do
+  begin
+    HocKyIDs.Add(Q.FieldByName('ID').AsInteger);
+    Q.Next;
+  end;
+  CurrentIndex := HocKyIDs.IndexOf(58);
+  LoadHocKyNamHoc;
+  LoadKhoa;
+  if ComboBox3.Items.Count = 0 then
+  begin
+    ComboBox3.Items.Add('Bảng điểm học phần');
+    ComboBox3.Items.Add('Bảng điểm thi');
+    ComboBox3.ItemIndex := 0;
+    end;
+    if ComboBox4.Items.Count = 0 then
+  begin
+    ComboBox4.Items.Add('Bảng điểm Kỳ thi phụ học phần');
+    ComboBox4.Items.Add('Bảng điểm Kỳ thi phụ');
+    ComboBox4.ItemIndex := 0;
+    end;
+end;
+
+procedure TForm1.TreeView1Click(Sender: TObject);
+var
+  i: Integer;
+  Node: TTreeNode;
+  MaLop: string;
+begin
+  Node := TreeView1.Selected;
+  if (Node <> nil) and (Node.Level = 1) then
+  begin
+    MaLop := Copy(Node.Text, 1, 6);
+    Label21.Caption := Node.Text;
+    Label29.Caption := Node.Text;
+
+    ClientDataSet3.Close;
+    ClientDataSet3.CommandText :=
+      'SELECT K.KeHoachID AS KHID_Internal, ' +
+      '       K.TenLopHP AS [Lớp học phần], ' +
+      '       HP.TenHP2 + '' ('' + CAST(HP.TinChiLT AS VARCHAR) + ''/'' + CAST(HP.TinChiTH AS VARCHAR) + '')'' AS [Tên học phần], ' +
+      '       K.Thi AS [Thi], ' +
+      '       ISNULL((SELECT SUM(SoLuong) FROM LichThi LT WHERE LT.KeHoachID = K.KeHoachID AND LT.KyThi = 1), 0) AS [SL], ' +
+      '       K.XNBP AS [XNBP], ' +
+      '       K.XN1 AS [XN1], ' +
+      '       CASE ' +
+      '         WHEN K.Buoi1 IS NOT NULL AND K.Ngay1 IS NOT NULL THEN ' +
+      '           (SELECT Buoi FROM Buoi WHERE BuoiID = K.Buoi1) + '' '' + FORMAT(K.Ngay1, ''dd/MM/yyyy'') ' +
+      '         ELSE NULL ' +
+      '       END AS [Ngày thi], ' +
+      '       HT1.TenHinhThuc AS [Hình thức], ' +
+      '       K.Tong1 AS [Tổng KQ] ' +
+      'FROM KeHoachHT K ' +
+      'INNER JOIN HocPhan HP ON K.MaHP = HP.MaHP ' +
+      'LEFT JOIN HinhThuc HT1 ON K.HT1 = HT1.HinhThucID ' +
+      'WHERE K.MaLop = :MaLop ' +
+      'ORDER BY HP.TenHP2';
+
+    ClientDataSet3.Params.ParamByName('MaLop').AsString := MaLop;
+    ClientDataSet3.Open;
+
+    DBGrid3.Columns[2].Width:= 300;
+    DBGrid3.Columns[7].Width:= 126;
+    for i := 0 to DBGrid3.Columns.Count - 1 do
+    begin
+    if DBGrid3.Columns[i].FieldName = 'KHID_Internal' then
+      DBGrid3.Columns[i].Visible := False
+  end;
+
+
+  for i := 0 to DBGrid5.Columns.Count - 1 do
+  begin
+    if DBGrid5.Columns[i].FieldName = 'KHID_Internal' then
+      DBGrid5.Columns[i].Visible := False
+    else if DBGrid5.Columns[i].FieldName = 'SL' then
+      DBGrid5.Columns[i].Visible := False;
+  end;
+  end;
+end;
+
+procedure TForm1.TreeView2Click(Sender: TObject);
+var
+  i: Integer;
+  Node: TTreeNode;
+  MaLop: string;
+begin
+  Node := TreeView2.Selected;
+  if (Node <> nil) and (Node.Level = 1) then
+  begin
+    MaLop := Copy(Node.Text, 1, 6);
+    Label32.Caption := Node.Text;
+    Label40.Caption := Node.Text;
+    ClientDataSet6.Close;
+    ClientDataSet6.CommandText :=
+      'SELECT K.KeHoachID AS KHID_Internal, ' +
+      '       K.TenLopHP AS [Lớp học phần], ' +
+      '       HP.TenHP2 + '' ('' + CAST(HP.TinChiLT AS VARCHAR) + ''/'' + CAST(HP.TinChiTH AS VARCHAR) + '')'' AS [Tên học phần], ' +
+      '       K.Thi AS [Thi], ' +
+      '       ISNULL((SELECT SUM(SoLuong) FROM LichThi LT WHERE LT.KeHoachID = K.KeHoachID AND LT.KyThi = 2), 0) AS [SL], ' +
+      '       K.XNBP AS [XNBP], ' +
+      '       K.XN1 AS [XN1], ' +
+      '       K.XN2 AS [XN2], ' +
+      '       CASE ' +
+      '         WHEN K.Buoi2 IS NOT NULL AND K.Ngay2 IS NOT NULL THEN ' +
+      '           (SELECT Buoi FROM Buoi WHERE BuoiID = K.Buoi2) + '' '' + FORMAT(K.Ngay2, ''dd/MM/yyyy'') ' +
+      '         ELSE NULL ' +
+      '       END AS [Ngày thi], ' +
+      '       HT2.TenHinhThuc AS [Hình thức], ' +
+      '       K.Tong2 AS [Tổng KQ] ' +
+      'FROM KeHoachHT K ' +
+      'INNER JOIN HocPhan HP ON K.MaHP = HP.MaHP ' +
+      'LEFT JOIN HinhThuc HT2 ON K.HT2 = HT2.HinhThucID ' +
+      'WHERE K.MaLop = :MaLop ' +
+      'ORDER BY HP.TenHP2';
+
+    ClientDataSet6.Params.ParamByName('MaLop').AsString := MaLop;
+    ClientDataSet6.Open;
+
+
+    DBGrid7.Columns[2].Width := 300;
+    DBGrid7.Columns[8].Width := 126;
+     for i := 0 to DBGrid7.Columns.Count - 1 do
+    begin
+    if DBGrid7.Columns[i].FieldName = 'KHID_Internal' then
+      DBGrid7.Columns[i].Visible := False
+  end;
+    for i := 0 to DBGrid9.Columns.Count - 1 do
+    begin
+      if DBGrid9.Columns[i].FieldName = 'KHID_Internal' then
+        DBGrid9.Columns[i].Visible := False
+        else if DBGrid9.Columns[i].FieldName = 'SL' then
+      DBGrid9.Columns[i].Visible := False;
+    end;
+  end;
+end;
+
+
+procedure TForm1.TreeView3Click(Sender: TObject);
+var
+  i: Integer;
+  Node: TTreeNode;
+  MaLop: string;
+begin
+  Node := TreeView3.Selected;
+
+  if (Node <> nil) and (Node.Level = 1) then
+  begin
+    MaLop := Copy(Node.Text, 1, 6);
+    Label43.Caption := Node.Text;
+
+    ClientDataSet9.Close;
+    ClientDataSet9.CommandText :=
+      'SELECT K.KeHoachID AS KHID_Internal, ' +
+      '       K.TenLopHP AS [Lớp học phần], ' +
+      '       HP.TenHP2 + '' ('' + CAST(HP.TinChiLT AS VARCHAR) + ''/'' + CAST(HP.TinChiTH AS VARCHAR) + '')'' AS [Tên học phần], ' +
+      '       K.Thi AS [Thi], ' +
+      '       ISNULL((SELECT SUM(SoLuong) FROM LichThi LT WHERE LT.KeHoachID = K.KeHoachID AND LT.KyThi = 1), 0) AS [SL], ' +
+      '       K.XNBP AS [XNBP], ' +
+      '       CASE ' +
+      '         WHEN K.Buoi1 IS NOT NULL AND K.Ngay1 IS NOT NULL THEN ' +
+      '           (SELECT Buoi FROM Buoi WHERE BuoiID = K.Buoi1) + '' '' + FORMAT(K.Ngay1, ''dd/MM/yyyy'') ' +
+      '         ELSE NULL ' +
+      '       END AS [Ngày thi], ' +
+      '       HT1.TenHinhThuc AS [Hình thức] ' +
+      'FROM KeHoachHT K ' +
+      'INNER JOIN HocPhan HP ON K.MaHP = HP.MaHP ' +
+      'LEFT JOIN HinhThuc HT1 ON K.HT1 = HT1.HinhThucID ' +
+      'WHERE K.MaLop = :MaLop ' +
+      'ORDER BY HP.TenHP2';
+
+    ClientDataSet9.Params.ParamByName('MaLop').AsString := MaLop;
+    ClientDataSet9.Open;
+
+    // Tuỳ chỉnh hiển thị DBGrid11
+    DBGrid11.Columns[2].Width := 300;
+    DBGrid11.Columns[6].Width := 126;
+
+    for i := 0 to DBGrid11.Columns.Count - 1 do
+    begin
+      if (DBGrid11.Columns[i].FieldName = 'KHID_Internal')  then
+         
+        DBGrid11.Columns[i].Visible := False;
+    end;
+  end;
+end;
+
+
+procedure TForm1.FormShow(Sender: TObject);
+var
+  Role: string;
+begin
+  if not IsAdmin then
+  begin
+    BitBtn2.Visible := False;
+    BitBtn6.Visible := False;
+    SpeedButton6.Visible := False;
+    SpeedButton7.Visible := False;
+    SpeedButton11.Visible := False;
+    SpeedButton12.Visible := False;
+    SpeedButton13.Visible := False;
+    SpeedButton14.Visible := False;
+    SpeedButton15.Visible := False;
+    SpeedButton16.Visible := False;
+    SpeedButton17.Visible := False;
+    DBGrid3.ReadOnly := True;
+    DBGrid4.ReadOnly := True;
+    DBGrid6.ReadOnly := True;
+    DBGrid10.ReadOnly := True;
+
+    ClientDataSet3.ReadOnly := True;
+    ClientDataSet4.ReadOnly := True;
+    ClientDataSet6.ReadOnly := True;
+    ClientDataSet10.ReadOnly := True;
+
+  end
+  else
+  begin
+
+    Role := LowerCase(LoggedMaSV);
+    TabSheet1.TabVisible := False;
+    TabSheet2.TabVisible := False;
+    TabSheet3.TabVisible := False;
+    TabSheet5.TabVisible := False;
+    TabSheet10.TabVisible := False;
+    TabSheet11.TabVisible := False;
+
+
+    DBGrid3.ReadOnly := True;
+    DBGrid4.ReadOnly := True;
+    DBGrid6.ReadOnly := True;
+    DBGrid10.ReadOnly := True;
+
+    ClientDataSet3.ReadOnly := True;
+    ClientDataSet4.ReadOnly := True;
+    ClientDataSet6.ReadOnly := True;
+    ClientDataSet10.ReadOnly := True;
+
+    // Phân quyền cụ thể
+    if Role = 'admin' then
+    begin
+      TabSheet1.TabVisible := True;
+      TabSheet2.TabVisible := True;
+      TabSheet3.TabVisible := True;
+      TabSheet5.TabVisible := True;
+      TabSheet10.TabVisible := True;
+      TabSheet11.TabVisible := True;
+
+      // Cho phép sửa mọi bảng
+      DBGrid3.ReadOnly := False;
+      DBGrid4.ReadOnly := False;
+      DBGrid6.ReadOnly := False;
+      DBGrid10.ReadOnly := False;
+
+      ClientDataSet3.ReadOnly := False;
+      ClientDataSet4.ReadOnly := False;
+      ClientDataSet6.ReadOnly := False;
+      ClientDataSet10.ReadOnly := False;
+    end
+    else if Role = 'gvbp' then
+    begin
+      SpeedButton7.Visible := False;
+      TabSheet2.TabVisible := True;
+      DBGrid10.ReadOnly := False;
+      ClientDataSet10.ReadOnly := False;
+    end
+    else if Role = 'kt' then
+    begin
+     SpeedButton14.Visible := False;
+      SpeedButton17.Visible := False;
+      TabSheet1.TabVisible := True;
+      TabSheet3.TabVisible := True;
+      TabSheet10.TabVisible := True;
+      TabSheet11.TabVisible := True;
+
+      DBGrid4.ReadOnly := False;
+      DBGrid6.ReadOnly := False;
+
+      ClientDataSet4.ReadOnly := False;
+      ClientDataSet6.ReadOnly := False;
+    end
+    else if Role = 'dt' then
+    begin
+      TabSheet5.TabVisible := True;
+    end;
+  end;
+
+  LoadDanhSachLop_Chinh;
+  LoadDanhSachLop_Phu;
+  LoadDanhSachLop_BP;
+end;
+
+
+
+procedure TForm1.LoadDanhSachLop_Chinh;
+var
+  NodeKhoa: TTreeNode;
+  MaKhoaStr, MaLop, TenLop, Phong, Buoi: string;
+  MaKhoaInt, MaKhoaHienTai: Integer;
+begin
+  TreeView1.Items.Clear;
+  Q.Close;
+  Q.CommandText :=
+    'SELECT L.MaKhoa, L.MaLop, L.TenLop, P.Phong AS Phong, B.Buoi ' +
+    'FROM LopHoc L ' +
+    'LEFT JOIN PhongHoc P ON L.PhongID = P.PhongID ' +
+    'LEFT JOIN Buoi B ON L.Buoi = B.BuoiID ' +
+    'ORDER BY L.MaKhoa, L.MaLop';
+  Q.Open;
+
+  MaKhoaHienTai := -1;
+  while not Q.Eof do
+  begin
+    MaKhoaInt := Q.FieldByName('MaKhoa').AsInteger;
+
+    if MaKhoaInt <> MaKhoaHienTai then
+    begin
+      MaKhoaHienTai := MaKhoaInt;
+      if (MaKhoaInt >= 1) and (MaKhoaInt <= KhoaCount) then
+        NodeKhoa := TreeView1.Items.Add(nil, Format('%d - %s', [MaKhoaInt, KhoaTen[MaKhoaInt]]))
+      else
+        NodeKhoa := TreeView1.Items.Add(nil, Format('%d - [Không rõ tên Khoa]', [MaKhoaInt]));
+    end;
+
+    MaLop := Q.FieldByName('MaLop').AsString;
+    TenLop := Q.FieldByName('TenLop').AsString;
+    Phong := Q.FieldByName('Phong').AsString;
+    Buoi := Q.FieldByName('Buoi').AsString;
+
+    TreeView1.Items.AddChild(NodeKhoa, Format('%s %s (%s,%s)', [MaLop, TenLop, Phong, Buoi]));
+    Q.Next;
+  end;
+end;
+procedure TForm1.LoadDanhSachLop_Phu;
+var
+  NodeKhoa: TTreeNode;
+  MaKhoaStr, MaLop, TenLop, Phong, Buoi: string;
+  MaKhoaInt, MaKhoaHienTai: Integer;
+begin
+  TreeView2.Items.Clear;
+
+  Q.Close;
+  Q.CommandText :=
+    'SELECT L.MaKhoa, L.MaLop, L.TenLop, P.Phong AS Phong, B.Buoi ' +
+    'FROM LopHoc L ' +
+    'LEFT JOIN PhongHoc P ON L.PhongID = P.PhongID ' +
+    'LEFT JOIN Buoi B ON L.Buoi = B.BuoiID ' +
+    'ORDER BY L.MaKhoa, L.MaLop';
+  Q.Open;
+
+  MaKhoaHienTai := -1;
+  while not Q.Eof do
+  begin
+    MaKhoaInt := Q.FieldByName('MaKhoa').AsInteger;
+    if MaKhoaInt <> MaKhoaHienTai then
+    begin
+      MaKhoaHienTai := MaKhoaInt;
+      if (MaKhoaInt >= 1) and (MaKhoaInt <= KhoaCount) then
+        NodeKhoa := TreeView2.Items.Add(nil, Format('%d - %s', [MaKhoaInt, KhoaTen[MaKhoaInt]]))
+      else
+        NodeKhoa := TreeView2.Items.Add(nil, Format('%d - [Không rõ tên Khoa]', [MaKhoaInt]));
+    end;
+
+    MaLop := Q.FieldByName('MaLop').AsString;
+    TenLop := Q.FieldByName('TenLop').AsString;
+    Phong := Q.FieldByName('Phong').AsString;
+    Buoi := Q.FieldByName('Buoi').AsString;
+
+    TreeView2.Items.AddChild(NodeKhoa, Format('%s %s (%s,%s)', [MaLop, TenLop, Phong, Buoi]));
+    Q.Next;
+  end;
+end;
+procedure TForm1.LoadDanhSachLop_BP;
+var
+  NodeKhoa: TTreeNode;
+  MaKhoaStr, MaLop, TenLop, Phong, Buoi: string;
+  MaKhoaInt, MaKhoaHienTai: Integer;
+begin
+  TreeView3.Items.Clear;
+
+  Q.Close;
+  Q.CommandText :=
+    'SELECT L.MaKhoa, L.MaLop, L.TenLop, P.Phong AS Phong, B.Buoi ' +
+    'FROM LopHoc L ' +
+    'LEFT JOIN PhongHoc P ON L.PhongID = P.PhongID ' +
+    'LEFT JOIN Buoi B ON L.Buoi = B.BuoiID ' +
+    'ORDER BY L.MaKhoa, L.MaLop';
+  Q.Open;
+
+  MaKhoaHienTai := -1;
+  while not Q.Eof do
+  begin
+    MaKhoaInt := Q.FieldByName('MaKhoa').AsInteger;
+    if MaKhoaInt <> MaKhoaHienTai then
+    begin
+      MaKhoaHienTai := MaKhoaInt;
+      if (MaKhoaInt >= 1) and (MaKhoaInt <= KhoaCount) then
+        NodeKhoa := TreeView3.Items.Add(nil, Format('%d - %s', [MaKhoaInt, KhoaTen[MaKhoaInt]]))
+      else
+        NodeKhoa := TreeView3.Items.Add(nil, Format('%d - [Không rõ tên Khoa]', [MaKhoaInt]));
+    end;
+
+    MaLop := Q.FieldByName('MaLop').AsString;
+    TenLop := Q.FieldByName('TenLop').AsString;
+    Phong := Q.FieldByName('Phong').AsString;
+    Buoi := Q.FieldByName('Buoi').AsString;
+
+    TreeView3.Items.AddChild(NodeKhoa, Format('%s %s (%s,%s)', [MaLop, TenLop, Phong, Buoi]));
+    Q.Next;
+  end;
+end;
+
+
+
+procedure TForm1.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+var
+  text: string;
+begin
+  text := InputBox('Nhập thông tin', 'Ghi lên chứng chỉ:', '');
+  if text <> '' then
+  begin
+    Image1.Canvas.Font.Size := 14;
+    Image1.Canvas.TextOut(X, Y, text);
+  end;
+end;
+
+procedure TForm1.Image2Click(Sender: TObject);
+begin
+  if MessageDlg('Bạn có chắc chắn muốn đăng xuất không?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    Application.Terminate;
+  end;
+end;
+
+procedure TForm1.ExportToExcel;
+var
+  Excel, Workbook, Worksheet: OleVariant;
+  Row, Col: Integer;
+  Khoa, Lop: string;
+begin
+  // Tạo Excel application
+  Excel := CreateOleObject('Excel.Application');
+  Excel.Visible := True;
+  Workbook := Excel.Workbooks.Add;
+  Worksheet := Workbook.Worksheets[1];
+
+  Khoa := ComboBox1.Text;
+  Lop := ComboBox2.Text;
+
+  // Xuất tiêu đề Khoa và Lớp vào ô đầu tiên của Excel
+  Worksheet.Cells[1, 1] := 'Khoa: ' + Khoa;
+  Worksheet.Cells[1, 2] := 'Lớp: ' + Lop;
+
+  for Col := 0 to DBGrid2.Columns.Count - 1 do
+  begin
+    Worksheet.Cells[2, Col + 1] := DBGrid2.Columns[Col].Title.Caption;
+  end;
+
+  if not ClientDataSet1.Active then
+    ClientDataSet1.Open;
+
+  // Xuất dữ liệu từ DBGrid vào Excel
+  for Row := 1 to DBGrid2.DataSource.DataSet.RecordCount do
+  begin
+    DBGrid2.DataSource.DataSet.RecNo := Row;
+    for Col := 0 to DBGrid2.Columns.Count - 1 do
+    begin
+      Worksheet.Cells[Row + 2, Col + 1] := DBGrid2.Columns[Col].Field.AsString;
+    end;
+  end;
+  Worksheet.Columns.AutoFit;
+end;
+
+procedure TForm1.LoadHocKyNamHoc;
+begin
+  if (CurrentIndex < 0) or (CurrentIndex >= HocKyIDs.Count) then
+    Exit;
+  Q.Close;
+  Q.CommandText := 'SELECT HocKy, NamHocS FROM HocKy_NamHoc WHERE ID = ' + IntToStr(HocKyIDs[CurrentIndex]);
+  Q.Open;
+
+  if not Q.IsEmpty then
+  begin
+    lblHocKy.Caption := Q.FieldByName('HocKy').AsString;
+    lblNamHoc.Caption := Q.FieldByName('NamHocS').AsString;
+  end
+  else
+  begin
+    lblHocKy.Caption := 'Không tìm thấy';
+    lblNamHoc.Caption := '';
+  end;
+end;
+
+procedure TForm1.SpeedButton10Click(Sender: TObject);
+var
+  td: TTaskDialog;
+  btnMo, btnLuu, btnHuy: TTaskDialogBaseButtonItem;
+  ResStream: TResourceStream;
+  FilePath: string;
+  SaveDlg: TSaveDialog;
+begin
+  td := TTaskDialog.Create(nil);
+  try
+    td.Title := '📘 Hướng dẫn sử dụng';
+    td.Text := 'Bạn muốn làm gì với tài liệu Quy chế tổ chức và hoạt động?';
+    td.CommonButtons := [];
+    td.Flags := [tfUseCommandLinks];
+    td.Caption := 'Tài liệu';
+
+    // Thêm nút Mở
+    btnMo := td.Buttons.Add;
+    btnMo.Caption := '📖 Mở file';
+    btnMo.ModalResult := 100;
+
+    // Thêm nút Lưu
+    btnLuu := td.Buttons.Add;
+    btnLuu.Caption := '💾 Lưu về máy';
+    btnLuu.ModalResult := 101;
+
+    // Thêm nút Hủy
+    btnHuy := td.Buttons.Add;
+    btnHuy.Caption := '❌ Hủy';
+    btnHuy.ModalResult := 102;
+
+    // Thực thi hộp thoại
+    if td.Execute then
+    begin
+      case td.ModalResult of
+        100: // Mở file
+          begin
+            FilePath := ExtractFilePath(ParamStr(0)) + 'QUY CHE HOAT DONG TRUNG TAM GDQPAN.pdf';
+
+            if not FileExists(FilePath) then
+            begin
+              ResStream := TResourceStream.Create(HInstance, 'QChoatdong', 'PDF');
+              try
+                ResStream.SaveToFile(FilePath);
+              finally
+                ResStream.Free;
+              end;
+            end;
+
+            ShellExecute(0, 'open', PChar(FilePath), nil, nil, SW_SHOWNORMAL);
+          end;
+
+        101: // Lưu về máy
+          begin
+            SaveDlg := TSaveDialog.Create(nil);
+            try
+              SaveDlg.Title := 'Lưu file';
+              SaveDlg.Filter := 'PDF Files (*.pdf)|*.pdf';
+              SaveDlg.DefaultExt := 'pdf';
+              SaveDlg.FileName := 'QUY CHE HOAT DONG TRUNG TAM GDQPAN.pdf';
+
+              if SaveDlg.Execute then
+              begin
+                ResStream := TResourceStream.Create(HInstance, 'QChoatdong', 'PDF');
+                try
+                  ResStream.SaveToFile(SaveDlg.FileName);
+                  ShowMessage('✅ Đã lưu thành công tại: ' + SaveDlg.FileName);
+                finally
+                  ResStream.Free;
+                end;
+              end;
+            finally
+              SaveDlg.Free;
+            end;
+          end;
+
+        102: ; // Hủy - không làm gì
+      end;
+    end;
+
+  finally
+    td.Free;
+  end;
+end;
+
+procedure TForm1.SpeedButton11Click(Sender: TObject);
+var
+  Excel, Workbook, Worksheet: OleVariant;
+  Grid: TDBGrid;
+  SheetName: string;
+  Row, Col,ExportCol:Integer;
+  CurrentDateTime: string;
+begin
+  if ComboBox3.ItemIndex = 0 then
+  begin
+    Grid := DBGrid3;
+    SheetName := 'BangDiemHocPhan';
+  end
+  else if ComboBox3.ItemIndex = 1 then
+  begin
+    Grid := DBGrid4;
+    SheetName := 'BangDiemThi';
+  end
+  else
+    Exit;
+  Excel := CreateOleObject('Excel.Application');
+  Excel.Visible := True;
+  Workbook := Excel.Workbooks.Add;
+  Worksheet := Workbook.Worksheets[1];
+  Worksheet.Name := SheetName;
+  Worksheet.Cells[1, 1] := Label21.Caption;
+  if ComboBox3.ItemIndex = 1 then
+  begin
+    Worksheet.Cells[2, 1] := 'Tên học phần: ' + Label22.Caption;
+    Worksheet.Cells[3, 1] := 'Ngày xuất: ' + FormatDateTime('dd/mm/yyyy hh:nn:ss', Now);
+  end
+  else
+  begin
+    Worksheet.Cells[2, 1] := 'Ngày xuất: ' + FormatDateTime('dd/mm/yyyy hh:nn:ss', Now);
+  end;
+
+  ExportCol := 1;
+  for Col := 0 to Grid.Columns.Count - 1 do
+  begin
+    if Grid.Columns[Col].FieldName <> 'KHID_Internal' then
+    begin
+      Worksheet.Cells[4, ExportCol] := Grid.Columns[Col].Title.Caption;
+      Inc(ExportCol);
+    end;
+  end;
+
+  for Row := 1 to Grid.DataSource.DataSet.RecordCount do
+  begin
+    Grid.DataSource.DataSet.RecNo := Row;
+    ExportCol := 1;
+    for Col := 0 to Grid.Columns.Count - 1 do
+    begin
+      if Grid.Columns[Col].FieldName <> 'KHID_Internal' then
+      begin
+        Worksheet.Cells[Row + 4, ExportCol] := Grid.Columns[Col].Field.AsString;
+        Inc(ExportCol);
+      end;
+    end;
+  end;
+  Worksheet.Columns.AutoFit;
+  // Excel.ActiveSheet.Pictures.Insert('C:\DuongDan\logo.png');
+end;
+
+
+
+
+procedure TForm1.SpeedButton12Click(Sender: TObject);
+var
+  Grid: TDBGrid;
+begin
+  if ComboBox4.ItemIndex = 0 then
+    Grid := DBGrid7
+  else if ComboBox4.ItemIndex = 1 then
+    Grid := DBGrid8
+  else
+    Exit;
+  PrintDBGrid(Grid);
+end;
+
+procedure TForm1.SpeedButton13Click(Sender: TObject);
+var
+  Excel, Workbook, Worksheet: OleVariant;
+  Grid: TDBGrid;
+  SheetName: string;
+  Row, Col: Integer;
+  CurrentDateTime: string;
+begin
+  if ComboBox4.ItemIndex = 0 then
+  begin
+    Grid := DBGrid7;
+    SheetName := 'BangDiemHocPhanKythiphu';
+  end
+  else if ComboBox4.ItemIndex = 1 then
+  begin
+    Grid := DBGrid8;
+    SheetName := 'BangDiemKythiphu';
+  end
+  else
+    Exit;
+  Excel := CreateOleObject('Excel.Application');
+  Excel.Visible := True;
+  Workbook := Excel.Workbooks.Add;
+  Worksheet := Workbook.Worksheets[1];
+  Worksheet.Name := SheetName;
+  Worksheet.Cells[1, 1] := Label32.Caption;
+  if ComboBox4.ItemIndex = 1 then
+  begin
+    Worksheet.Cells[2, 1] := 'Tên học phần: ' + Label33.Caption;
+    Worksheet.Cells[3, 1] := 'Ngày xuất: ' + FormatDateTime('dd/mm/yyyy hh:nn:ss', Now);
+  end
+  else
+  begin
+    Worksheet.Cells[2, 1] := 'Ngày xuất: ' + FormatDateTime('dd/mm/yyyy hh:nn:ss', Now);
+  end;
+
+  for Col := 0 to Grid.Columns.Count - 1 do
+    Worksheet.Cells[4, Col + 1] := Grid.Columns[Col].Title.Caption;
+  for Row := 1 to Grid.DataSource.DataSet.RecordCount do
+  begin
+    Grid.DataSource.DataSet.RecNo := Row;
+    for Col := 0 to Grid.Columns.Count - 1 do
+      Worksheet.Cells[Row + 4, Col + 1] := Grid.Columns[Col].Field.AsString;
+  end;
+
+  Worksheet.Columns.AutoFit;
+  // Excel.ActiveSheet.Pictures.Insert('C:\DuongDan\logo.png');
+
+end;
+
+
+
+procedure TForm1.SpeedButton14Click(Sender: TObject);
+var
+  logPath: string;
+begin
+  logPath := ExtractFilePath(Application.ExeName) + 'log_nhapdiem_ktc.txt';
+
+  if FileExists(logPath) then
+  begin
+    ShellExecute(0, 'open', PChar(logPath), nil, nil, SW_SHOWNORMAL);
+  end
+  else
+  begin
+    ShowMessage('Chưa có lịch sử nhập điểm nào được ghi lại!');
+  end;
+end;
+
+procedure TForm1.SpeedButton15Click(Sender: TObject);
+var
+  Grid: TDBGrid;
+begin
+  if ComboBox5.Text <> 'Bảng điểm BP' then
+  begin
+    ShowMessage('Vui lòng chọn "Bảng điểm BP" để in!');
+    Exit;
+  end;
+
+  Grid := DBGrid12;
+  PrintDBGrid(Grid);
+end;
+
+
+procedure TForm1.SpeedButton16Click(Sender: TObject);
+var
+  Excel, Workbook, Worksheet: OleVariant;
+  Grid: TDBGrid;
+  SheetName: string;
+  Row, Col: Integer;
+begin
+  if ComboBox5.Text <> 'Bảng điểm BP' then
+  begin
+    ShowMessage('Vui lòng chọn "Bảng điểm BP" để xuất Excel!');
+    Exit;
+  end;
+
+  if ClientDataSet10.IsEmpty then
+  begin
+    ShowMessage('Không có dữ liệu để xuất!');
+    Exit;
+  end;
+
+  Grid := DBGrid12;
+  SheetName := 'BangDiemBoPhan';
+
+  Excel := CreateOleObject('Excel.Application');
+  Excel.Visible := True;
+  Workbook := Excel.Workbooks.Add;
+  Worksheet := Workbook.Worksheets[1];
+  Worksheet.Name := SheetName;
+
+  Worksheet.Cells[1, 1] := 'BẢNG ĐIỂM BỘ PHẬN';
+  Worksheet.Cells[2, 1] := 'Tên học phần: ' + Label44.Caption;
+  Worksheet.Cells[3, 1] := 'Ngày xuất: ' + FormatDateTime('dd/mm/yyyy hh:nn:ss', Now);
+
+  // Ghi tiêu đề cột
+  for Col := 0 to Grid.Columns.Count - 1 do
+    Worksheet.Cells[5, Col + 1] := Grid.Columns[Col].Title.Caption;
+
+  // Ghi dữ liệu
+  for Row := 1 to Grid.DataSource.DataSet.RecordCount do
+  begin
+    Grid.DataSource.DataSet.RecNo := Row;
+    for Col := 0 to Grid.Columns.Count - 1 do
+      Worksheet.Cells[Row + 5, Col + 1] := Grid.Columns[Col].Field.AsString;
+  end;
+
+  Worksheet.Columns.AutoFit;
+end;
+
+
+procedure TForm1.SpeedButton17Click(Sender: TObject);
+var
+  logPath: string;
+begin
+  logPath := ExtractFilePath(Application.ExeName) + 'log_nhapdiem_ktp.txt';
+
+  if FileExists(logPath) then
+  begin
+    ShellExecute(0, 'open', PChar(logPath), nil, nil, SW_SHOWNORMAL);
+  end
+  else
+  begin
+    ShowMessage('Chưa có lịch sử nhập điểm nào được ghi lại!');
+  end;
+end;
+
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+begin
+  if CurrentIndex > 0 then
+  begin
+    Dec(CurrentIndex);
+    LoadHocKyNamHoc;
+  end;
+end;
+
+procedure TForm1.SpeedButton2Click(Sender: TObject);
+begin
+  if CurrentIndex < HocKyIDs.Count - 1 then
+  begin
+    Inc(CurrentIndex);
+    LoadHocKyNamHoc;
+  end;
+end;
+
+ procedure TForm1.SpeedButton3Click(Sender: TObject);
+begin
+  ShellExecute(0, 'OPEN', 'https://www.facebook.com/NaauqaRose/', nil, nil, SW_SHOWNORMAL);
+end;
+
+
+procedure TForm1.SpeedButton4Click(Sender: TObject);
+var
+  td: TTaskDialog;
+  btnMo, btnLuu, btnHuy: TTaskDialogBaseButtonItem;
+  ResStream: TResourceStream;
+  FilePath: string;
+  SaveDlg: TSaveDialog;
+begin
+  td := TTaskDialog.Create(nil);
+  try
+    td.Title := '📘 Hướng dẫn sử dụng';
+    td.Text := 'Bạn muốn làm gì với tài liệu Quy định quản lý sinh viên?';
+    td.CommonButtons := [];
+    td.Flags := [tfUseCommandLinks];
+    td.Caption := 'Tài liệu';
+
+    // Thêm nút Mở
+    btnMo := td.Buttons.Add;
+    btnMo.Caption := '📖 Mở file';
+    btnMo.ModalResult := 100;
+
+    // Thêm nút Lưu
+    btnLuu := td.Buttons.Add;
+    btnLuu.Caption := '💾 Lưu về máy';
+    btnLuu.ModalResult := 101;
+
+    // Thêm nút Hủy
+    btnHuy := td.Buttons.Add;
+    btnHuy.Caption := '❌ Hủy';
+    btnHuy.ModalResult := 102;
+
+    // Thực thi hộp thoại
+    if td.Execute then
+    begin
+      case td.ModalResult of
+        100: // Mở file
+          begin
+            FilePath := ExtractFilePath(ParamStr(0)) + 'Quy dinh quan ly sinh vien hoc tap GDQPAN.pdf';
+
+            if not FileExists(FilePath) then
+            begin
+              ResStream := TResourceStream.Create(HInstance, 'QDQLSV', 'PDF');
+              try
+                ResStream.SaveToFile(FilePath);
+              finally
+                ResStream.Free;
+              end;
+            end;
+
+            ShellExecute(0, 'open', PChar(FilePath), nil, nil, SW_SHOWNORMAL);
+          end;
+
+        101: // Lưu về máy
+          begin
+            SaveDlg := TSaveDialog.Create(nil);
+            try
+              SaveDlg.Title := 'Lưu file';
+              SaveDlg.Filter := 'PDF Files (*.pdf)|*.pdf';
+              SaveDlg.DefaultExt := 'pdf';
+              SaveDlg.FileName := 'Quy dinh quan ly sinh vien hoc tap GDQPAN.pdf';
+
+              if SaveDlg.Execute then
+              begin
+                ResStream := TResourceStream.Create(HInstance, 'QDQLSV', 'PDF');
+                try
+                  ResStream.SaveToFile(SaveDlg.FileName);
+                  ShowMessage('✅ Đã lưu thành công tại: ' + SaveDlg.FileName);
+                finally
+                  ResStream.Free;
+                end;
+              end;
+            finally
+              SaveDlg.Free;
+            end;
+          end;
+
+        102: ; // Hủy - không làm gì
+      end;
+    end;
+
+  finally
+    td.Free;
+  end;
+end;
+
+
+procedure TForm1.SpeedButton5Click(Sender: TObject);
+begin
+  ClientDataSet2.Filtered := False;
+end;
+
+procedure TForm1.PrintDBGrid(Grid: TDBGrid);
+var
+  Bitmap: TBitmap;
+  AspectRatio: Double;
+  DestRect: TRect;
+  PageW, PageH: Integer;
+begin
+  Bitmap := TBitmap.Create;
+  try
+    Bitmap.Width := Grid.Width;
+    Bitmap.Height := Grid.Height;
+    Grid.PaintTo(Bitmap.Canvas.Handle, 0, 0);
+
+    if PrintDialog1.Execute then
+    begin
+      PageW := Printer.PageWidth - 200;
+      PageH := Printer.PageHeight - 200;
+
+
+      AspectRatio := Bitmap.Width / Bitmap.Height;
+
+      if PageW / PageH > AspectRatio then
+      begin
+
+        DestRect.Top := 100;
+        DestRect.Bottom := Printer.PageHeight - 100;
+        DestRect.Left := (Printer.PageWidth - Round((Printer.PageHeight - 200) * AspectRatio)) div 2;
+        DestRect.Right := DestRect.Left + Round((Printer.PageHeight - 200) * AspectRatio);
+      end
+      else
+      begin
+
+        DestRect.Left := 100;
+        DestRect.Right := Printer.PageWidth - 100;
+        DestRect.Top := (Printer.PageHeight - Round((Printer.PageWidth - 200) / AspectRatio)) div 2;
+        DestRect.Bottom := DestRect.Top + Round((Printer.PageWidth - 200) / AspectRatio);
+      end;
+
+      // In ra giấy
+      Printer.BeginDoc;
+      try
+        Printer.Canvas.StretchDraw(DestRect, Bitmap);
+      finally
+        Printer.EndDoc;
+      end;
+    end;
+
+  finally
+    Bitmap.Free;
+  end;
+end;
+
+procedure TForm1.SpeedButton6Click(Sender: TObject);
+var
+  Grid: TDBGrid;
+begin
+  if ComboBox3.ItemIndex = 0 then
+    Grid := DBGrid3
+  else if ComboBox3.ItemIndex = 1 then
+    Grid := DBGrid4
+  else
+    Exit;
+  PrintDBGrid(Grid);
+end;
+
+
+
+procedure TForm1.SpeedButton7Click(Sender: TObject);
+var
+  logPath: string;
+begin
+  logPath := ExtractFilePath(Application.ExeName) + 'log_nhapdiem_bp.txt';
+
+  if FileExists(logPath) then
+  begin
+    ShellExecute(0, 'open', PChar(logPath), nil, nil, SW_SHOWNORMAL);
+  end
+  else
+  begin
+    ShowMessage('Chưa có lịch sử nhập điểm nào được ghi lại!');
+  end;
+end;
+
+procedure TForm1.SpeedButton8Click(Sender: TObject);
+begin
+  ShellExecute(0, 'OPEN', 'https://www.ttn.edu.vn/', nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TForm1.SpeedButton9Click(Sender: TObject);
+var
+  td: TTaskDialog;
+  btnMo, btnLuu, btnHuy: TTaskDialogBaseButtonItem;
+  ResStream: TResourceStream;
+  FilePath: string;
+  SaveDlg: TSaveDialog;
+begin
+  td := TTaskDialog.Create(nil);
+  try
+    td.Title := '📘 Hướng dẫn sử dụng';
+    td.Text := 'Bạn muốn làm gì với tài liệu hướng dẫn?';
+    td.CommonButtons := [];
+    td.Flags := [tfUseCommandLinks];
+    td.Caption := 'Tài liệu';
+
+    // Thêm nút Mở
+    btnMo := td.Buttons.Add;
+    btnMo.Caption := '📖 Mở file hướng dẫn';
+    btnMo.ModalResult := 100;
+
+    // Thêm nút Lưu
+    btnLuu := td.Buttons.Add;
+    btnLuu.Caption := '💾 Lưu về máy';
+    btnLuu.ModalResult := 101;
+
+    // Thêm nút Hủy
+    btnHuy := td.Buttons.Add;
+    btnHuy.Caption := '❌ Hủy';
+    btnHuy.ModalResult := 102;
+
+    // Thực thi hộp thoại
+    if td.Execute then
+    begin
+      case td.ModalResult of
+        100: // Mở file
+          begin
+            FilePath := ExtractFilePath(ParamStr(0)) + 'Huongdansudung.pdf';
+
+            if not FileExists(FilePath) then
+            begin
+              ResStream := TResourceStream.Create(HInstance, 'HDSD', 'PDF');
+              try
+                ResStream.SaveToFile(FilePath);
+              finally
+                ResStream.Free;
+              end;
+            end;
+
+            ShellExecute(0, 'open', PChar(FilePath), nil, nil, SW_SHOWNORMAL);
+          end;
+
+        101: // Lưu về máy
+          begin
+            SaveDlg := TSaveDialog.Create(nil);
+            try
+              SaveDlg.Title := 'Lưu file';
+              SaveDlg.Filter := 'PDF Files (*.pdf)|*.pdf';
+              SaveDlg.DefaultExt := 'pdf';
+              SaveDlg.FileName := 'Huongdansudung.pdf';
+
+              if SaveDlg.Execute then
+              begin
+                ResStream := TResourceStream.Create(HInstance, 'HDSD', 'PDF');
+                try
+                  ResStream.SaveToFile(SaveDlg.FileName);
+                  ShowMessage('✅ Đã lưu thành công tại: ' + SaveDlg.FileName);
+                finally
+                  ResStream.Free;
+                end;
+              end;
+            finally
+              SaveDlg.Free;
+            end;
+          end;
+
+        102: ; // Hủy - không làm gì
+      end;
+    end;
+
+  finally
+    td.Free;
+  end;
+end;
+
+procedure AddKhoaToCombos(const TenKhoa: string; MaKhoa: Integer; Combos: array of TComboBox);
+var
+  i: Integer;
+begin
+  for i := Low(Combos) to High(Combos) do
+    Combos[i].Items.AddObject(TenKhoa, TObject(MaKhoa));
+end;
+
+procedure TForm1.LoadKhoa;
+begin
+  ComboBox1.Clear;
+  AddKhoaToCombos('Khoa Y Dược', 1, [ComboBox1]);
+  AddKhoaToCombos('Khoa Nông lâm Nghiệp', 2, [ComboBox1]);
+  AddKhoaToCombos('Khoa Kinh Tế', 3, [ComboBox1]);
+  AddKhoaToCombos('Khoa Sưu Phạm', 4, [ComboBox1]);
+  AddKhoaToCombos('Khoa Lý luận Chính trị', 5, [ComboBox1]);
+  AddKhoaToCombos('Khoa Ngoại Ngữ', 6, [ComboBox1]);
+  AddKhoaToCombos('Khoa Chăn nuôi Thú Y', 7, [ComboBox1]);
+  AddKhoaToCombos('Khoa KHTN&CN', 8, [ComboBox1]);
+end;
+
+
+procedure TForm1.ComboBox1Change(Sender: TObject);
+var
+  MaKhoa: Integer;
+begin
+  if ComboBox1.ItemIndex >= 0 then
+  begin
+    MaKhoa := Integer(ComboBox1.Items.Objects[ComboBox1.ItemIndex]);
+    LoadLop(MaKhoa);
+  end;
+end;
+
+
+
+procedure TForm1.ComboBox3Change(Sender: TObject);
+begin
+  if ComboBox3.Text = 'Bảng điểm thi' then
+    ShowMessage('Đang chọn bảng điểm thi...')
+  else if ComboBox3.Text = 'Bảng điểm phụ' then
+    ShowMessage('Đang chọn bảng điểm phụ...');
+end;
+
+
+procedure TForm1.LoadLop(MaKhoa: Integer);
+var
+  TenLop: string;
+  MaLop: string;
+begin
+  ComboBox2.Items.Clear;
+
+  Q.Close;
+  Q.CommandText := 'SELECT MaLop, TenLop FROM LopHoc WHERE MaKhoa = :MK ORDER BY TenLop';
+  Q.ParamByName('MK').AsInteger := MaKhoa;
+  Q.Open;
+
+  while not Q.Eof do
+  begin
+    MaLop := Q.FieldByName('MaLop').AsString;
+    TenLop := Q.FieldByName('TenLop').AsString;
+
+    ComboBox2.Items.AddObject(TenLop, TObject(StrNew(PChar(MaLop))));
+
+    Q.Next;
+  end;
+end;
+
+procedure TForm1.BitBtn1Click(Sender: TObject);
+var
+  MaLopStr, MaSV: string;
+  Dem: Integer;
+begin
+  if ComboBox2.ItemIndex < 0 then
+  begin
+    ShowMessage('Vui lòng chọn lớp để cập nhật GDQP!');
+    Exit;
+  end;
+
+  MaLopStr := string(PChar(ComboBox2.Items.Objects[ComboBox2.ItemIndex]));
+  Dem := 0;
+  Screen.Cursor := crHourGlass;
+
+  try
+    ClientDataSet2.First;
+    while not ClientDataSet2.Eof do
+    begin
+      if ClientDataSet2.FieldByName('Xếp loại').AsString = 'PASS' then
+      begin
+        MaSV := ClientDataSet2.FieldByName('MaSV').AsString;
+
+        Q.Close;
+        Q.CommandText := 'SELECT * FROM HSSV WHERE MaSV = :MaSV';
+        Q.Params.ParamByName('MaSV').AsString := MaSV;
+        Q.Open;
+
+        if not Q.IsEmpty then
+        begin
+          Q.Edit;
+          Q.FieldByName('GDQP').AsBoolean := True;
+          Q.Post;
+          Q.ApplyUpdates(0);
+          Inc(Dem);
+        end;
+      end;
+      ClientDataSet2.Next;
+    end;
+
+    ShowMessage('Đã cập nhật ' + IntToStr(Dem) + ' sinh viên có GDQP = True');
+
+    // Nạp lại DBGrid1
+    ClientDataSet1.Close;
+    ClientDataSet1.CommandText :=
+    'SELECT MaLop, MaSV, HoLot, Ten, NgaySinh, NoiSinh, GDQP, GhiChu ' +
+    'FROM HSSV ' +
+    'WHERE MaLop = :MaLop AND GDQP = 1 ' +
+    'AND (:IsAdmin = 1 OR MaSV = CAST(:MaSV AS NVARCHAR(8)))';
+    ClientDataSet1.Params.ParamByName('MaLop').AsString := MaLopStr;
+    ClientDataSet1.Params.ParamByName('IsAdmin').AsInteger := IfThen(IsAdmin, 1, 0);
+    ClientDataSet1.Params.ParamByName('MaSV').AsString := LoggedMaSV;
+    ClientDataSet1.Open;
+
+
+  finally
+    Screen.Cursor := crDefault;
+  end;
+end;
+
+procedure TForm1.BitBtn2Click(Sender: TObject);
+var
+  MaSV: string;
+begin
+  if ClientDataSet1.IsEmpty then
+  begin
+    ShowMessage('Vui lòng chọn sinh viên cần hủy chứng chỉ.');
+    Exit;
+  end;
+
+  MaSV := ClientDataSet1.FieldByName('MaSV').AsString;
+
+  // Cập nhật GDQP về 0
+  Q.Close;
+  Q.CommandText := 'SELECT * FROM HSSV WHERE MaSV = :MaSV';
+  Q.Params.ParamByName('MaSV').AsString := MaSV;
+  Q.Open;
+
+  if not Q.IsEmpty then
+  begin
+    Q.Edit;
+    Q.FieldByName('GDQP').AsBoolean := False;
+    Q.Post;
+    Q.ApplyUpdates(0);
+    ShowMessage('Đã hủy chứng chỉ GDQP cho sinh viên ' + MaSV);
+  end
+  else
+    ShowMessage('Không tìm thấy sinh viên trong bảng HSSV.');
+
+  // Làm mới lại danh sách
+  ClientDataSet1.Refresh;
+end;
+
+
+procedure TForm1.BitBtn3Click(Sender: TObject);
+var
+  i: Integer;
+  MaLopStr, MaSV, MaHP: string;
+begin
+  if ComboBox2.ItemIndex < 0 then
+  begin
+    ShowMessage('Vui lòng chọn lớp để tổng hợp điểm!');
+    Exit;
+  end;
+
+  MaLopStr := string(PChar(ComboBox2.Items.Objects[ComboBox2.ItemIndex]));
+  if MaLopStr = '' then
+  begin
+    ShowMessage('Không tìm thấy mã lớp trong lớp được chọn!');
+    Exit;
+  end;
+
+  ClientDataSet2.Active := False;
+  ClientDataSet2.CommandText :=
+  'WITH MaxScores AS ( ' +
+  '  SELECT B.MaSV, B.MaHP, MAX(B.DiemMax) AS DiemMax, MAX(CAST(B.DaNop AS INT)) AS DaNop,MAX(B.HocPhi) AS HocPhi, HP.TinChi ' +
+  '  FROM BangDiem B ' +
+  '  JOIN HocPhan HP ON B.MaHP = HP.MaHP ' +
+  '  WHERE B.MaSV IN (SELECT MaSV FROM HSSV WHERE MaLop = :MaLop) ' +
+  '  GROUP BY B.MaSV, B.MaHP, HP.TinChi ' +
+  '), ' +
+  'FilteredScores AS ( ' +
+  '  SELECT M.*, ' +
+  '    CASE ' +
+  '      WHEN LEFT(M.MaSV,2) = ''19'' AND M.DiemMax > 3.9 AND (M.DaNop = 1 OR M.HocPhi = 0) AND M.MaHP IN (''QP211006'',''QP211007'',''QP211008'',''QP211009'') THEN 1 ' +
+  '      WHEN LEFT(M.MaSV,2) IN (''20'',''21'',''22'') AND M.DiemMax > 5.0 AND (M.DaNop = 1 OR M.HocPhi = 0) AND M.MaHP IN (''QP211006'',''QP211011'',''QP211012'',''QP211013'') THEN 1 ' +
+  '      ELSE 0 ' +
+  '    END AS DatMon ' +
+  '  FROM MaxScores M ' +
+  ') ' +
+  'SELECT H.MaSV, H.HoLot, H.Ten, H.NgaySinh, ' +
+  '  8 AS [Tổng tín chỉ], ' +
+
+  // Tín chỉ tích lũy
+  '  SUM(CASE WHEN F.DatMon = 1 THEN F.TinChi ELSE 0 END) AS [Tín chỉ tích lũy], ' +
+
+  // Trung bình cộng
+  '  CAST(SUM(CASE ' +
+  '    WHEN (LEFT(H.MaSV,2) = ''19'' AND F.MaHP IN (''QP211006'',''QP211007'',''QP211008'',''QP211009'')) OR ' +
+  '         (LEFT(H.MaSV,2) IN (''20'',''21'',''22'') AND F.MaHP IN (''QP211006'',''QP211011'',''QP211012'',''QP211013'')) ' +
+  '    THEN F.DiemMax * F.TinChi ' +
+  '    ELSE 0 END) AS FLOAT) / 8 AS [Trung bình cộng], ' +
+
+  // Xếp loại + Xét những người đã có GDQP
+   ' CASE   ' +
+   ' WHEN EXISTS (SELECT 1 FROM HSSV H2 WHERE H2.MaSV = H.MaSV AND H2.GDQP = 1  '+
+               '  AND NOT EXISTS (SELECT 1 FROM BangDiem B2 JOIN HocPhan HP2 ON B2.MaHP = HP2.MaHP   '+
+                               '  WHERE B2.MaSV = H.MaSV AND HP2.MaHP LIKE ''QP%'')) ' +
+  '  THEN ''Đa co Chung chi GDQP'' ' +
+  '  WHEN CAST(SUM(CASE      '+
+    '  WHEN (LEFT(H.MaSV,2) = ''19'' AND F.MaHP IN (''QP211006'',''QP211007'',''QP211008'',''QP211009'')) OR  '+
+         '  (LEFT(H.MaSV,2) IN (''20'',''21'',''22'') AND F.MaHP IN (''QP211006'',''QP211011'',''QP211012'',''QP211013''))  '+
+    '  THEN F.DiemMax * F.TinChi ELSE 0 END) AS FLOAT) / 8 >= 5  '+
+    'AND SUM(CASE WHEN F.DatMon = 1 THEN F.TinChi ELSE 0 END) = 8 THEN ''PASS''  '+
+   ' ELSE ''FAIL''   '+
+ ' END AS [Xếp loại], '+
+
+
+  // Điểm từng học phần
+  '  MAX(CASE WHEN F.MaHP = ''QP211006'' THEN F.DiemMax ELSE NULL END) AS [QP211006], ' +
+  '  MAX(CASE WHEN F.MaHP = ''QP211007'' THEN F.DiemMax ELSE NULL END) AS [QP211007], ' +
+  '  MAX(CASE WHEN F.MaHP = ''QP211008'' THEN F.DiemMax ELSE NULL END) AS [QP211008], ' +
+  '  MAX(CASE WHEN F.MaHP = ''QP211009'' THEN F.DiemMax ELSE NULL END) AS [QP211009], ' +
+  '  MAX(CASE WHEN F.MaHP = ''QP211011'' THEN F.DiemMax ELSE NULL END) AS [QP211011], ' +
+  '  MAX(CASE WHEN F.MaHP = ''QP211012'' THEN F.DiemMax ELSE NULL END) AS [QP211012], ' +
+  '  MAX(CASE WHEN F.MaHP = ''QP211013'' THEN F.DiemMax ELSE NULL END) AS [QP211013] ' +
+  'FROM FilteredScores F ' +
+  'JOIN HSSV H ON F.MaSV = H.MaSV ' +
+  'WHERE H.MaLop = :MaLop ' +
+  '  AND (:IsAdmin = 1 OR H.MaSV = CAST(:MaSV AS NVARCHAR(8))) ' +
+  'GROUP BY H.MaSV, H.HoLot, H.Ten, H.NgaySinh ' +
+  'ORDER BY H.MaSV';
+
+   ClientDataSet2.Params.ParamByName('IsAdmin').AsInteger := IfThen(IsAdmin, 1, 0);
+   ClientDataSet2.Params.ParamByName('MaSV').AsString := LoggedMaSV;
+   ClientDataSet2.Params.ParamByName('MaLop').AsString := MaLopStr;
+   ClientDataSet2.Active := True;
+   ClientDataSet2.Filtered := False;
+  if ClientDataSet2.IsEmpty then
+  begin
+    ShowMessage('Không tìm thấy dữ liệu cho lớp đã chọn!');
+    Exit;
+  end;
+
+  for i := 0 to DBGrid2.Columns.Count - 1 do
+  begin
+    MaHP := DBGrid2.Columns[i].FieldName;
+    if Pos('QP', MaHP) = 1 then
+    begin
+      Q.Close;
+      Q.CommandText := 'SELECT TenHP2 FROM HocPhan WHERE MaHP = :mahp';
+      Q.ParamByName('mahp').AsString := MaHP;
+      Q.Open;
+      if not Q.IsEmpty then
+        DBGrid2.Columns[i].Title.Caption := Q.FieldByName('TenHP2').AsString;
+    end;
+  end;
+
+
+  MaSV := ClientDataSet2.FieldByName('MaSV').AsString;
+  for i := 0 to DBGrid2.Columns.Count - 1 do
+  begin
+    if Copy(MaSV, 1, 2) = '19' then
+    begin
+  if SameText(DBGrid2.Columns[i].FieldName, 'QP211011') or
+     SameText(DBGrid2.Columns[i].FieldName, 'QP211012') or
+     SameText(DBGrid2.Columns[i].FieldName, 'QP211013') then
+    DBGrid2.Columns[i].Visible := False
+  else
+    DBGrid2.Columns[i].Visible := True;
+end
+else if (Copy(MaSV, 1, 2) = '20') or (Copy(MaSV, 1, 2) = '21') or (Copy(MaSV, 1, 2) = '22') then
+begin
+  if SameText(DBGrid2.Columns[i].FieldName, 'QP211007') or
+     SameText(DBGrid2.Columns[i].FieldName, 'QP211008') or
+     SameText(DBGrid2.Columns[i].FieldName, 'QP211009') then
+    DBGrid2.Columns[i].Visible := False
+  else
+    DBGrid2.Columns[i].Visible := True;
+end;
+  end;
+
+  ShowMessage('Đã tổng hợp điểm GDQP cho lớp thành công!');
+end;
+
+
+procedure TForm1.BitBtn4Click(Sender: TObject);
+begin
+  // Lọc ra danh sách sinh viên có xếp loại là PASS
+  ClientDataSet2.Filter := '[Xếp loại] = ''PASS''';
+  ClientDataSet2.Filtered := True;
+end;
+
+procedure TForm1.BitBtn5Click(Sender: TObject);
+begin
+// Lọc ra danh sách sinh viên có xếp loại là FAIL
+  ClientDataSet2.Filter := '[Xếp loại] = ''FAIL''';
+  ClientDataSet2.Filtered := True;
+end;
+
+procedure TForm1.BitBtn6Click(Sender: TObject);
+begin
+ ExportToExcel;
+end;
+procedure LoadJPEGFromResource(const ResName: string; var jpeg: TJPEGImage);
+var
+  rs: TResourceStream;
+begin
+  rs := TResourceStream.Create(HInstance, ResName, RT_RCDATA);
+  try
+    jpeg := TJPEGImage.Create;
+    jpeg.LoadFromStream(rs);
+  finally
+    rs.Free;
+  end;
+end;
+
+procedure TForm1.BitBtn7Click(Sender: TObject);
+var
+  jpg: TJPEGImage;
+  bmp: TBitmap;
+  res: TResourceStream;
+begin
+  jpg := TJPEGImage.Create;
+  bmp := TBitmap.Create;
+
+  try
+
+    res := TResourceStream.Create(HInstance, 'CHUNGCHI2', RT_RCDATA);
+    try
+      jpg.LoadFromStream(res);
+      bmp.Assign(jpg);
+    finally
+      res.Free;
+    end;
+
+    bmp.Canvas.Font.Size := 14;
+    bmp.Canvas.Font.Color := clBlack;
+   
+
+
+    Image1.Picture.Assign(bmp);
+
+  finally
+    jpg.Free;
+    bmp.Free;
+  end;
+end;
+
+
+
+procedure TForm1.btnTaiAnhClick(Sender: TObject);
+var
+  jpg: TJPEGImage;
+begin
+  SaveDialog1.Title := 'Chọn nơi lưu ảnh chứng chỉ';
+  SaveDialog1.Filter := 'Bitmap Image (*.bmp)|*.bmp|JPEG Image (*.jpg)|*.jpg';
+  SaveDialog1.DefaultExt := 'bmp';
+  SaveDialog1.FileName := 'ChungChi.bmp';
+
+  if SaveDialog1.Execute then
+  begin
+    if LowerCase(ExtractFileExt(SaveDialog1.FileName)) = '.jpg' then
+    begin
+      jpg := TJPEGImage.Create;
+      try
+        jpg.Assign(Image1.Picture.Bitmap);
+        jpg.SaveToFile(SaveDialog1.FileName);
+      finally
+        jpg.Free;
+      end;
+    end
+    else
+    begin
+      Image1.Picture.Bitmap.SaveToFile(SaveDialog1.FileName);
+    end;
+
+    ShowMessage('✅ Ảnh đã được lưu tại: ' + SaveDialog1.FileName);
+  end;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  jpg: TJPEGImage;
+  bmp: TBitmap;
+  res: TResourceStream;
+  resName: string;
+begin
+  jpg := TJPEGImage.Create;
+  bmp := TBitmap.Create;
+  try
+    if CurrentSide = 1 then
+    begin
+      resName := 'CHUNGCHI1';
+      CurrentSide := 2;
+    end
+    else
+    begin
+      resName := 'CHUNGCHI2';
+      CurrentSide := 1;
+    end;
+
+    res := TResourceStream.Create(HInstance, resName, RT_RCDATA);
+    try
+      jpg.LoadFromStream(res);
+      bmp.Assign(jpg);
+      Image1.Picture.Assign(bmp);
+    finally
+      res.Free;
+    end;
+
+  finally
+    jpg.Free;
+    bmp.Free;
+  end;
+end;
+
+procedure TForm1.ClientDataSet10AfterPost(DataSet: TDataSet);
+var
+  S, sBoPhanMoi, sBoPhanCu, sUSBP, logLine, logPath, tenHP, lopNganh: string;
+  BoPhanCu: Variant;
+begin
+
+  S := 'SELECT BoPhan FROM BangDiem WHERE MaSV = ' + QuotedStr(DataSet.FieldByName('Mã SV').AsString) +
+       ' AND KeHoachID = ' + IntToStr(ClientDataSet9.FieldByName('KHID_Internal').AsInteger);
+  Q.Close;
+  Q.CommandText := S;
+  Q.Open;
+
+  if not Q.IsEmpty then
+    BoPhanCu := Q.FieldByName('BoPhan').Value
+  else
+    BoPhanCu := Null;
+
+
+  if VarIsNull(DataSet.FieldByName('Điểm BP').Value) then
+    sBoPhanMoi := 'NULL'
+  else
+    sBoPhanMoi := VarToStr(DataSet.FieldByName('Điểm BP').Value);
+
+  if Trim(DataSet.FieldByName('USBP').AsString) = '' then
+    sUSBP := 'NULL'
+  else
+    sUSBP := QuotedStr(DataSet.FieldByName('USBP').AsString);
+
+
+  S := 'UPDATE BangDiem SET BoPhan = ' + sBoPhanMoi + ', USBP = ' + sUSBP +
+       ' WHERE MaSV = ' + QuotedStr(DataSet.FieldByName('Mã SV').AsString) +
+       ' AND KeHoachID = ' + IntToStr(ClientDataSet9.FieldByName('KHID_Internal').AsInteger) + '; SELECT @@ROWCOUNT AS KQ';
+  Q.Close;
+  Q.CommandText := S;
+  Q.Open;
+
+  ShowMessage('Đã lưu: ' + Q.FieldByName('KQ').AsString + ' dòng.');
+
+
+  logPath := ExtractFilePath(Application.ExeName) + 'log_nhapdiem_bp.txt';
+  tenHP := ClientDataSet9.FieldByName('Tên học phần').AsString;
+  lopNganh := Label43.Caption;
+
+  if VarIsNull(BoPhanCu) then
+    sBoPhanCu := 'NULL'
+  else
+    sBoPhanCu := VarToStr(BoPhanCu);
+
+  logLine := Format('[%s] %s cập nhật: Mã SV=%s | Lớp=%s | Tên HP=%s | Điểm cũ=%s | Điểm mới=%s | USBP=%s | KeHoachID=%d',
+    [FormatDateTime('dd/MM/yyyy hh:nn:ss', Now), LoggedMaSV,
+     DataSet.FieldByName('Mã SV').AsString, lopNganh, tenHP, sBoPhanCu, sBoPhanMoi, sUSBP,
+     ClientDataSet9.FieldByName('KHID_Internal').AsInteger]);
+
+  TFile.AppendAllText(logPath, logLine + sLineBreak, TEncoding.UTF8);
+end;
+
+
+procedure TForm1.ClientDataSet1AfterPost(DataSet: TDataSet);
+var
+  S: string;
+begin
+  S := 'UPDATE HSSV SET ' +
+       'NoiSinh = N''' + DataSet.FieldByName('NoiSinh').AsString + ''', ' +
+       'GhiChu = N''' + DataSet.FieldByName('GhiChu').AsString + ''' ' +
+       'WHERE MaSV = ''' + DataSet.FieldByName('MaSV').AsString + '''; ' +
+       'SELECT @@ROWCOUNT AS KQ';
+  Q.Close;
+  Q.CommandText := S;
+  Q.Open;
+  ShowMessage('Đã lưu: ' + Q.FieldByName('KQ').AsString + ' dòng.');
+end;
+
+procedure TForm1.ClientDataSet4AfterPost(DataSet: TDataSet);
+var
+  S, logLine, logPath, tenHP, lopNganh, sDiemMoi, sDiemCu, sUS: string;
+  DiemCu: Variant;
+begin
+  // Lấy điểm cũ từ bảng BangDiem trước khi UPDATE
+  S := 'SELECT Diem1 FROM BangDiem WHERE MaSV = ' + QuotedStr(DataSet.FieldByName('Mã SV').AsString) +
+       ' AND KeHoachID = ' + IntToStr(ClientDataSet3.FieldByName('KHID_Internal').AsInteger);
+  Q.Close;
+  Q.CommandText := S;
+  Q.Open;
+
+  if not Q.IsEmpty then
+    DiemCu := Q.FieldByName('Diem1').Value
+  else
+    DiemCu := Null;
+
+  // Lấy điểm mới và chuẩn hóa
+  if VarIsNull(DataSet.FieldByName('Điểm thi').Value) then
+    sDiemMoi := 'NULL'
+  else
+    sDiemMoi := VarToStr(DataSet.FieldByName('Điểm thi').Value);
+
+  if Trim(DataSet.FieldByName('US1').AsString) = '' then
+    sUS := 'NULL'
+  else
+    sUS := QuotedStr(DataSet.FieldByName('US1').AsString);
+
+  // Cập nhật điểm mới
+  S := 'UPDATE BangDiem SET Diem1 = ' + sDiemMoi + ', US1 = ' + sUS +
+       ' WHERE MaSV = ' + QuotedStr(DataSet.FieldByName('Mã SV').AsString) +
+       ' AND KeHoachID = ' + IntToStr(ClientDataSet3.FieldByName('KHID_Internal').AsInteger) + '; SELECT @@ROWCOUNT AS KQ';
+  Q.Close;
+  Q.CommandText := S;
+  Q.Open;
+
+  ShowMessage('Đã lưu: ' + Q.FieldByName('KQ').AsString + ' dòng.');
+
+  // Ghi log
+  logPath := ExtractFilePath(Application.ExeName) + 'log_nhapdiem_ktc.txt';
+  tenHP := ClientDataSet3.FieldByName('Tên học phần').AsString;
+  lopNganh := Label21.Caption;
+
+  if VarIsNull(DiemCu) then
+    sDiemCu := 'NULL'
+  else
+    sDiemCu := VarToStr(DiemCu);
+
+  logLine := Format('[%s] %s cập nhật: Mã SV=%s | Lớp=%s | Tên HP=%s | Điểm cũ=%s | Điểm mới=%s | US1=%s | KeHoachID=%d',
+    [FormatDateTime('dd/MM/yyyy hh:nn:ss', Now), LoggedMaSV,
+     DataSet.FieldByName('Mã SV').AsString, lopNganh, tenHP, sDiemCu, sDiemMoi, sUS,
+     ClientDataSet3.FieldByName('KHID_Internal').AsInteger]);
+
+  TFile.AppendAllText(logPath, logLine + sLineBreak, TEncoding.UTF8);
+end;
+
+procedure TForm1.ClientDataSet7AfterPost(DataSet: TDataSet);
+var
+  S, logLine, logPath, tenHP, lopNganh, sDiemMoi, sDiemCu, sUS: string;
+  DiemCu: Variant;
+begin
+  // Lấy điểm cũ trước khi cập nhật
+  S := 'SELECT Diem2 FROM BangDiem WHERE MaSV = ' + QuotedStr(DataSet.FieldByName('Mã SV').AsString) +
+       ' AND KeHoachID = ' + IntToStr(ClientDataSet6.FieldByName('KHID_Internal').AsInteger);
+  Q.Close;
+  Q.CommandText := S;
+  Q.Open;
+
+  if not Q.IsEmpty then
+    DiemCu := Q.FieldByName('Diem2').Value
+  else
+    DiemCu := Null;
+
+  // Lấy điểm mới và chuẩn hóa
+  if VarIsNull(DataSet.FieldByName('Điểm thi 2').Value) then
+    sDiemMoi := 'NULL'
+  else
+    sDiemMoi := VarToStr(DataSet.FieldByName('Điểm thi 2').Value);
+
+  if Trim(DataSet.FieldByName('US2').AsString) = '' then
+    sUS := 'NULL'
+  else
+    sUS := QuotedStr(DataSet.FieldByName('US2').AsString);
+
+  // Cập nhật điểm mới vào DB
+  S := 'UPDATE BangDiem SET Diem2 = ' + sDiemMoi + ', US2 = ' + sUS +
+       ' WHERE MaSV = ' + QuotedStr(DataSet.FieldByName('Mã SV').AsString) +
+       ' AND KeHoachID = ' + IntToStr(ClientDataSet6.FieldByName('KHID_Internal').AsInteger) + '; SELECT @@ROWCOUNT AS KQ';
+  Q.Close;
+  Q.CommandText := S;
+  Q.Open;
+
+  ShowMessage('Đã lưu: ' + Q.FieldByName('KQ').AsString + ' dòng.');
+
+  logPath := ExtractFilePath(Application.ExeName) + 'log_nhapdiem_ktp.txt';
+  tenHP := ClientDataSet6.FieldByName('Tên học phần').AsString;
+  lopNganh := Label32.Caption;
+
+  if VarIsNull(DiemCu) then
+    sDiemCu := 'NULL'
+  else
+    sDiemCu := VarToStr(DiemCu);
+
+  logLine := Format('[%s] %s cập nhật: Mã SV=%s | Lớp=%s | Tên HP=%s | Điểm cũ=%s | Điểm mới=%s | US2=%s | KeHoachID=%d',
+    [FormatDateTime('dd/MM/yyyy hh:nn:ss', Now), LoggedMaSV,
+     DataSet.FieldByName('Mã SV').AsString, lopNganh, tenHP, sDiemCu, sDiemMoi, sUS,
+     ClientDataSet6.FieldByName('KHID_Internal').AsInteger]);
+
+  TFile.AppendAllText(logPath, logLine + sLineBreak, TEncoding.UTF8);
+end;
+
+procedure TForm1.DBGrid10DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  if (Column.FieldName = 'XL1') or (Column.FieldName = 'XL2') then
+  begin
+    DBGrid10.Canvas.Brush.Color := clWhite;
+    DBGrid10.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+    Exit;
+  end;
+
+  DBGrid10.Canvas.Brush.Color := RGB(255, 255, 204);
+  DBGrid10.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+
+procedure TForm1.DBGrid11CellClick(Column: TColumn);
+var
+  KeHoachID: Integer;
+  TenHP: string;
+  CoDiem, ChuaCoDiem: Integer;
+  Diem: Variant;
+  BucketCounts: array[0..4] of Integer;
+  i: Integer;
+  BucketColors: array[0..4] of TColor;
+begin
+  if not ClientDataSet9.Active or ClientDataSet9.IsEmpty then Exit;
+
+  KeHoachID := ClientDataSet9.FieldByName('KHID_Internal').AsInteger;
+  TenHP := ClientDataSet9.FieldByName('Tên học phần').AsString;
+  Label44.Caption := TenHP;
+
+  // ===== Load điểm bộ phận =====
+  ClientDataSet10.Close;
+  ClientDataSet10.CommandText :=
+    'SELECT BD.MaSV AS [Mã SV], ' +
+    '       HS.HoLot + '' '' + HS.Ten AS [Họ tên], ' +
+    '       BD.BoPhan AS [Điểm BP], ' +
+    '       BD.USBP AS [USBP] ' +
+    'FROM BangDiem BD ' +
+    'JOIN HSSV HS ON BD.MaSV = HS.MaSV ' +
+    'WHERE BD.KeHoachID = :KeHoachID ' +
+    'AND (:IsAdmin = 1 OR BD.MaSV = CAST(:MaSV AS NVARCHAR(8))) ' +
+    'ORDER BY BD.MaSV';
+  ClientDataSet10.Params.ParamByName('KeHoachID').AsInteger := KeHoachID;
+  ClientDataSet10.Params.ParamByName('IsAdmin').AsInteger := IfThen(IsAdmin, 1, 0);
+  ClientDataSet10.Params.ParamByName('MaSV').AsString := LoggedMaSV;
+  ClientDataSet10.Open;
+
+  DBGrid12.Columns[0].Width := 80;
+  DBGrid12.Columns[1].Width := 250;
+  DBGrid12.Columns[2].Width := 70;
+  DBGrid12.Columns[3].Width := 100;
+
+  // ===== Thống kê điểm Bộ phận =====
+  CoDiem := 0;
+  ChuaCoDiem := 0;
+  for i := 0 to 4 do BucketCounts[i] := 0;
+
+  ClientDataSet10.First;
+  while not ClientDataSet10.Eof do
+  begin
+    Diem := ClientDataSet10.FieldByName('Điểm BP').Value;
+    if VarIsNull(Diem) then
+      Inc(ChuaCoDiem)
+    else
+    begin
+      Inc(CoDiem);
+      if Diem <= 3.9 then Inc(BucketCounts[0])
+      else if Diem <= 5.4 then Inc(BucketCounts[1])
+      else if Diem <= 6.9 then Inc(BucketCounts[2])
+      else if Diem <= 8.4 then Inc(BucketCounts[3])
+      else Inc(BucketCounts[4]);
+    end;
+
+    ClientDataSet10.Next;
+  end;
+
+  Edit11.Text := IntToStr(CoDiem);
+  Edit12.Text := IntToStr(ChuaCoDiem);
+  BucketColors[0] := clRed;
+  BucketColors[1] := clOlive;
+  BucketColors[2] := clGreen;
+  BucketColors[3] := clBlue;
+  BucketColors[4] := clPurple;
+
+  with Chart3.Series[0] do
+  begin
+    Clear;
+    Add(BucketCounts[0], '0–3.9', BucketColors[0]);
+    Add(BucketCounts[1], '4–5.4', BucketColors[1]);
+    Add(BucketCounts[2], '5.5–6.9', BucketColors[2]);
+    Add(BucketCounts[3], '7–8.4', BucketColors[3]);
+    Add(BucketCounts[4], '8.5–10', BucketColors[4]);
+  end;
+end;
+
+
+
+procedure TForm1.DBGrid11DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Grid: TDBGrid;
+  MauXanh: TColor;
+  MauVang: TColor;
+begin
+  Grid := Sender as TDBGrid;
+
+  MauXanh := RGB(223, 240, 216);
+  MauVang := RGB(255, 255, 204);
+
+  if not (gdSelected in State) then
+  begin
+    if Odd(Grid.DataSource.DataSet.RecNo) then
+      Grid.Canvas.Brush.Color := MauXanh
+    else
+      Grid.Canvas.Brush.Color := MauVang;
+  end;
+
+  Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  DrawColumnCell(grid, DBCheckBox7, Sender, Rect, DataCol, Column, State);
+end;
+
+procedure TForm1.DBGrid12DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Grid: TDBGrid;
+  MauXanh: TColor;
+  MauVang: TColor;
+begin
+  Grid := Sender as TDBGrid;
+
+  MauXanh := RGB(223, 240, 216);
+  MauVang := RGB(255, 255, 204);
+  if not (gdSelected in State) then
+  begin
+    if Odd(Grid.DataSource.DataSet.RecNo) then
+      Grid.Canvas.Brush.Color := MauXanh
+    else
+      Grid.Canvas.Brush.Color := MauVang;
+  end;
+
+  Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
+end;
+
+procedure TForm1.DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  grid: TDBGrid;
+  row: Integer;
+begin
+  grid := Sender as TDBGrid;
+  row := grid.DataSource.DataSet.RecNo;
+  if Odd(row) then
+    grid.Canvas.Brush.Color := clMoneyGreen;
+  // clMenuHighlight;//clNavy ; //clMedGray  ;//clSilver;
+  grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  DrawColumnCell(grid, DBCheckBox2, Sender, Rect, DataCol, Column, State);
+  //DrawColumnCell(grid, DBCheckBox3, Sender, Rect, DataCol, Column, State);
+end;
+
+procedure TForm1.DBGrid3CellClick(Column: TColumn);
+var
+  KeHoachID: Integer;
+  TenHP: string;
+  CoDiem, ChuaCoDiem, ChuaDat: Integer;
+  TongDiem: Double;
+  Diem: Variant;
+  BucketCounts: array[0..4] of Integer;
+  i: Integer;
+  BucketColors: array[0..4] of TColor;
+begin
+  if not ClientDataSet3.Active or ClientDataSet3.IsEmpty then Exit;
+  KeHoachID := ClientDataSet3.FieldByName('KHID_Internal').AsInteger;
+  TenHP := ClientDataSet3.FieldByName('Tên học phần').AsString;
+  Label22.Caption := TenHP;
+  if not ClientDataSet3.FieldByName('Tổng KQ').IsNull then
+    Edit5.Text := FloatToStrF(ClientDataSet3.FieldByName('Tổng KQ').AsFloat, ffFixed, 8, 1)
+  else
+    Edit5.Text := '0';
+
+  // Load danh sách điểm đã sắp xếp MaSV tăng dần
+  ClientDataSet4.Close;
+  ClientDataSet4.CommandText :=
+    'SELECT BD.MaSV AS [Mã SV], ' +
+    '       HS.HoLot + '' '' + HS.Ten AS [Họ tên], ' +
+    '       BD.Diem1 AS [Điểm thi], ' +
+    '       BD.US1 AS [US1] ' +
+    'FROM BangDiem BD ' +
+    'JOIN HSSV HS ON BD.MaSV = HS.MaSV ' +
+    'WHERE BD.KeHoachID = :KeHoachID ' +
+    'AND (:IsAdmin = 1 OR BD.MaSV = CAST(:MaSV AS NVARCHAR(8)))' +
+    'ORDER BY BD.MaSV';
+  ClientDataSet4.Params.ParamByName('KeHoachID').AsInteger := KeHoachID;
+  ClientDataSet4.Params.ParamByName('IsAdmin').AsInteger := IfThen(IsAdmin, 1, 0);
+  ClientDataSet4.Params.ParamByName('MaSV').AsString := LoggedMaSV;
+  ClientDataSet4.Open;
+
+  DBGrid4.Columns[0].Width := 80;
+  DBGrid4.Columns[1].Width := 190;
+  DBGrid4.Columns[2].Width := 70;
+  DBGrid4.Columns[3].Width := 50;
+
+  // ===== Thống kê điểm =====
+  CoDiem := 0;
+  ChuaCoDiem := 0;
+  ChuaDat := 0;
+  TongDiem := 0;
+  for i := 0 to 4 do BucketCounts[i] := 0;
+
+  ClientDataSet4.First;
+  while not ClientDataSet4.Eof do
+  begin
+    Diem := ClientDataSet4.FieldByName('Điểm thi').Value;
+    if VarIsNull(Diem) then
+      Inc(ChuaCoDiem)
+    else
+    begin
+      Inc(CoDiem);
+      TongDiem := TongDiem + ClientDataSet4.FieldByName('Điểm thi').AsFloat;
+      if ClientDataSet4.FieldByName('Điểm thi').AsFloat < 5 then
+        Inc(ChuaDat);
+
+
+      if Diem <= 3.9 then Inc(BucketCounts[0])
+      else if Diem <= 5.4 then Inc(BucketCounts[1])
+      else if Diem <= 6.9 then Inc(BucketCounts[2])
+      else if Diem <= 8.4 then Inc(BucketCounts[3])
+      else Inc(BucketCounts[4]);
+    end;
+    ClientDataSet4.Next;
+  end;
+
+  Edit1.Text := IntToStr(CoDiem);
+  Edit2.Text := IntToStr(ChuaCoDiem);
+  Edit3.Text := IntToStr(ChuaDat);
+  Edit4.Text := FloatToStrF(TongDiem, ffFixed, 8, 1);
+
+  // ===== Vẽ biểu đồ TChart theo bucket với màu phân loại học lực =====
+  BucketColors[0] := clRed;
+  BucketColors[1] := clOlive;
+  BucketColors[2] := clGreen;
+  BucketColors[3] := clBlue;
+  BucketColors[4] := clPurple;
+
+  with Chart1.Series[0] do
+  begin
+    Clear;
+    Add(BucketCounts[0], '0–3.9', BucketColors[0]);
+    Add(BucketCounts[1], '4–5.4', BucketColors[1]);
+    Add(BucketCounts[2], '5.5–6.9', BucketColors[2]);
+    Add(BucketCounts[3], '7–8.4', BucketColors[3]);
+    Add(BucketCounts[4], '8.5–10', BucketColors[4]);
+  end;
+end;
+
+procedure TForm1.DBGrid5CellClick(Column: TColumn);
+var
+  KeHoachID: Integer;
+begin
+  if not ClientDataSet3.Active or ClientDataSet3.IsEmpty then Exit;
+  KeHoachID := ClientDataSet3.FieldByName('KHID_Internal').AsInteger;
+  Label30.Caption := ClientDataSet3.FieldByName('Tên học phần').AsString;
+  ClientDataSet5.Close;
+  ClientDataSet5.CommandText :=
+  'SELECT HS.MaSV, HS.HoLot, HS.Ten, HS.NgaySinh, ' +
+  '       ISNULL(BD.XL1, 0) AS XL1, ' +
+  '       BD.LyDoCamThi AS [Xử lý] ' +
+  'FROM BangDiem BD ' +
+  'JOIN HSSV HS ON BD.MaSV = HS.MaSV ' +
+  'WHERE BD.KeHoachID = :KeHoachID ' +
+ 'AND (:IsAdmin = 1 OR BD.MaSV = CAST(:MaSV AS NVARCHAR(8)))' +
+  'ORDER BY HS.MaSV';
+  ClientDataSet5.Params.ParamByName('KeHoachID').AsInteger := KeHoachID;
+  ClientDataSet5.Params.ParamByName('IsAdmin').AsInteger := IfThen(IsAdmin, 1, 0);
+  ClientDataSet5.Params.ParamByName('MaSV').AsString := LoggedMaSV;
+  ClientDataSet5.Open;
+  DBGrid6.Columns[1].Width := 200;
+end;
+
+
+procedure TForm1.DBGrid3DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Grid: TDBGrid;
+  MauXanh: TColor;
+  MauVang: TColor;
+begin
+  Grid := Sender as TDBGrid;
+
+  MauXanh := RGB(223, 240, 216);
+  MauVang := RGB(255, 255, 204);
+
+  // Tô màu nền xen kẽ, trừ dòng đang được chọn
+  if not (gdSelected in State) then
+  begin
+    if Odd(Grid.DataSource.DataSet.RecNo) then
+      Grid.Canvas.Brush.Color := MauXanh
+    else
+      Grid.Canvas.Brush.Color := MauVang;
+  end;
+
+  Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  DrawColumnCell(grid, DBCheckBox3, Sender, Rect, DataCol, Column, State);
+  DrawColumnCell(Grid, DBCheckBox1, Sender, Rect, DataCol, Column, State);
+end;
+
+
+
+procedure TForm1.DBGrid4DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Grid: TDBGrid;
+  MauXanh: TColor;
+  MauVang: TColor;
+begin
+  Grid := Sender as TDBGrid;
+
+  MauXanh := RGB(223, 240, 216);
+  MauVang := RGB(255, 255, 204);
+
+  if not (gdSelected in State) then
+  begin
+    if Odd(Grid.DataSource.DataSet.RecNo) then
+      Grid.Canvas.Brush.Color := MauXanh
+    else
+      Grid.Canvas.Brush.Color := MauVang;
+  end;
+
+  Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+
+end;
+
+procedure TForm1.DBGrid5DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Grid: TDBGrid;
+  MauXanh: TColor;
+  MauVang: TColor;
+begin
+  Grid := Sender as TDBGrid;
+
+  MauXanh := RGB(223, 240, 216);
+  MauVang := RGB(255, 255, 204);
+
+
+  if not (gdSelected in State) then
+  begin
+    if Odd(Grid.DataSource.DataSet.RecNo) then
+      Grid.Canvas.Brush.Color := MauXanh
+    else
+      Grid.Canvas.Brush.Color := MauVang;
+  end;
+
+  Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  DrawColumnCell(grid, DBCheckBox3, Sender, Rect, DataCol, Column, State);
+  DrawColumnCell(Grid, DBCheckBox1, Sender, Rect, DataCol, Column, State);
+end;
+
+procedure TForm1.DBGrid6DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  XL1Value: Integer;
+begin
+if Column.FieldName = 'XL1' then
+  begin
+    DBGrid6.Canvas.Brush.Color := clWhite;
+    DBGrid6.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+    Exit;
+  end;
+  DBGrid6.Canvas.Brush.Color := RGB(255, 255, 204);
+  DBGrid6.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+procedure TForm1.DBGrid7CellClick(Column: TColumn);
+var
+  KeHoachID: Integer;
+  TenHP: string;
+  CoDiem, ChuaCoDiem, ChuaDat: Integer;
+  TongDiem: Double;
+  Diem: Variant;
+  BucketCounts: array[0..4] of Integer;
+  BucketColors: array[0..4] of TColor;
+  i: Integer;
+begin
+  if not ClientDataSet6.Active or ClientDataSet6.IsEmpty then Exit;
+
+  KeHoachID := ClientDataSet6.FieldByName('KHID_Internal').AsInteger;
+  TenHP := ClientDataSet6.FieldByName('Tên học phần').AsString;
+  Label33.Caption := TenHP;
+
+  if not ClientDataSet6.FieldByName('Tổng KQ').IsNull then
+    Edit10.Text := FloatToStrF(ClientDataSet6.FieldByName('Tổng KQ').AsFloat, ffFixed, 8, 1)
+  else
+    Edit10.Text := '0';
+
+  ClientDataSet7.Close;
+  ClientDataSet7.CommandText :=
+    'SELECT BD.MaSV AS [Mã SV], ' +
+    '       HS.HoLot + '' '' + HS.Ten AS [Họ tên], ' +
+    '       BD.Diem2 AS [Điểm thi 2], ' +
+    '       BD.US2 AS [US2] ' +
+    'FROM BangDiem BD ' +
+    'JOIN HSSV HS ON BD.MaSV = HS.MaSV ' +
+    'WHERE BD.KeHoachID = :KeHoachID ' +
+    '  AND (BD.Diem1 < 3.9 OR BD.Diem1 IS NULL) ' +
+   'AND (:IsAdmin = 1 OR BD.MaSV = CAST(:MaSV AS NVARCHAR(8)))' +
+    'ORDER BY BD.MaSV';
+  ClientDataSet7.Params.ParamByName('KeHoachID').AsInteger := KeHoachID;
+  ClientDataSet7.Params.ParamByName('IsAdmin').AsInteger := IfThen(IsAdmin, 1, 0);
+ClientDataSet7.Params.ParamByName('MaSV').AsString := LoggedMaSV;
+  ClientDataSet7.Open;
+
+  // Căn chỉnh DBGrid8
+  DBGrid8.Columns[0].Width := 80;
+  DBGrid8.Columns[1].Width := 190;
+  DBGrid8.Columns[2].Width := 70;
+  DBGrid8.Columns[3].Width := 50;
+
+  // ===== Thống kê điểm =====
+  CoDiem := 0;
+  ChuaCoDiem := 0;
+  ChuaDat := 0;
+  TongDiem := 0;
+  for i := 0 to 4 do BucketCounts[i] := 0;
+
+  ClientDataSet7.First;
+  while not ClientDataSet7.Eof do
+  begin
+    Diem := ClientDataSet7.FieldByName('Điểm thi 2').Value;
+    if VarIsNull(Diem) then
+      Inc(ChuaCoDiem)
+    else
+    begin
+      Inc(CoDiem);
+      TongDiem := TongDiem + ClientDataSet7.FieldByName('Điểm thi 2').AsFloat;
+      if ClientDataSet7.FieldByName('Điểm thi 2').AsFloat < 5 then
+        Inc(ChuaDat);
+
+      if Diem <= 3.9 then Inc(BucketCounts[0])
+      else if Diem <= 5.4 then Inc(BucketCounts[1])
+      else if Diem <= 6.9 then Inc(BucketCounts[2])
+      else if Diem <= 8.4 then Inc(BucketCounts[3])
+      else Inc(BucketCounts[4]);
+    end;
+    ClientDataSet7.Next;
+  end;
+
+  Edit6.Text := IntToStr(CoDiem);
+  Edit7.Text := IntToStr(ChuaCoDiem);
+  Edit8.Text := IntToStr(ChuaDat);
+  Edit9.Text := FloatToStrF(TongDiem, ffFixed, 8, 1);
+
+  // ===== Vẽ biểu đồ Chart2 =====
+  BucketColors[0] := clRed;
+  BucketColors[1] := clOlive;
+  BucketColors[2] := clGreen;
+  BucketColors[3] := clBlue;
+  BucketColors[4] := clPurple;
+
+  with Chart2.Series[0] do
+  begin
+    Clear;
+    Add(BucketCounts[0], '0–3.9', BucketColors[0]);
+    Add(BucketCounts[1], '4–5.4', BucketColors[1]);
+    Add(BucketCounts[2], '5.5–6.9', BucketColors[2]);
+    Add(BucketCounts[3], '7–8.4', BucketColors[3]);
+    Add(BucketCounts[4], '8.5–10', BucketColors[4]);
+  end;
+end;
+
+procedure TForm1.DBGrid7DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Grid: TDBGrid;
+  MauXanh: TColor;
+  MauVang: TColor;
+begin
+  Grid := Sender as TDBGrid;
+
+  MauXanh := RGB(223, 240, 216);
+  MauVang := RGB(255, 255, 204);
+
+  // Tô màu nền xen kẽ, trừ dòng đang được chọn
+  if not (gdSelected in State) then
+  begin
+    if Odd(Grid.DataSource.DataSet.RecNo) then
+      Grid.Canvas.Brush.Color := MauXanh
+    else
+      Grid.Canvas.Brush.Color := MauVang;
+  end;
+
+  Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  DrawColumnCell(grid, DBCheckBox4, Sender, Rect, DataCol, Column, State);
+  DrawColumnCell(Grid, DBCheckBox5, Sender, Rect, DataCol, Column, State);
+  DrawColumnCell(Grid, DBCheckBox6, Sender, Rect, DataCol, Column, State);
+end;
+procedure TForm1.DBGrid9CellClick(Column: TColumn);
+var
+  KeHoachID: Integer;
+begin
+  if not ClientDataSet6.Active or ClientDataSet6.IsEmpty then Exit;
+
+  KeHoachID := ClientDataSet6.FieldByName('KHID_Internal').AsInteger;
+  Label34.Caption := ClientDataSet6.FieldByName('Tên học phần').AsString;
+
+  ClientDataSet8.Close;
+  ClientDataSet8.CommandText :=
+    'SELECT HS.MaSV, HS.HoLot, HS.Ten, HS.NgaySinh, ' +
+    '       ISNULL(BD.XL1, 0) AS XL1, ' +
+    '       ISNULL(BD.XL2, 0) AS XL2, ' +
+    '       BD.LyDoCamThi AS [Xử lý] ' +
+    'FROM BangDiem BD ' +
+    'JOIN HSSV HS ON BD.MaSV = HS.MaSV ' +
+    'WHERE BD.KeHoachID = :KeHoachID ' +
+    '  AND (BD.Diem1 < 3.9 OR BD.Diem1 IS NULL) ' +
+   'AND (:IsAdmin = 1 OR BD.MaSV = CAST(:MaSV AS NVARCHAR(8)))' +
+    'ORDER BY HS.MaSV';
+
+  ClientDataSet8.Params.ParamByName('KeHoachID').AsInteger := KeHoachID;
+  ClientDataSet8.Params.ParamByName('IsAdmin').AsInteger := IfThen(IsAdmin, 1, 0);
+  ClientDataSet8.Params.ParamByName('MaSV').AsString := LoggedMaSV;
+  ClientDataSet8.Open;
+
+  DBGrid10.Columns[1].Width := 200;
+end;
+
+procedure TForm1.DBGrid9DrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumn; State: TGridDrawState);
+var
+  Grid: TDBGrid;
+  MauXanh: TColor;
+  MauVang: TColor;
+begin
+  Grid := Sender as TDBGrid;
+
+  MauXanh := RGB(223, 240, 216);
+  MauVang := RGB(255, 255, 204);
+
+
+  if not (gdSelected in State) then
+  begin
+    if Odd(Grid.DataSource.DataSet.RecNo) then
+      Grid.Canvas.Brush.Color := MauXanh
+    else
+      Grid.Canvas.Brush.Color := MauVang;
+  end;
+
+  Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+  DrawColumnCell(grid, DBCheckBox4, Sender, Rect, DataCol, Column, State);
+  DrawColumnCell(Grid, DBCheckBox5, Sender, Rect, DataCol, Column, State);
+  DrawColumnCell(Grid, DBCheckBox6, Sender, Rect, DataCol, Column, State);
+end;
+end.

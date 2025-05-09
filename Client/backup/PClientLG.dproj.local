@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/04/13 21:24:39.000.229,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/04/13 21:25:14.000.314,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\FormLogin.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2025/04/13 21:25:14.000.314,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\FormLogin.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/04/13 21:26:20.000.864,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\PClientLG.dproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2025/04/13 21:31:56.000.028,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\FormLogin.dfm=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\ui_login.dfm</Transaction>
+    <Transaction>2025/04/13 21:31:56.000.028,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\FormLogin.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\ui_login.pas</Transaction>
+  </Transactions>
+</BorlandProject>

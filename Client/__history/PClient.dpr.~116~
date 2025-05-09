@@ -1,0 +1,45 @@
+﻿program PClient;
+
+uses
+  Vcl.Forms,
+  UClient in 'UClient.pas' {Form1},
+  Unit1 in 'Unit1.pas',
+   UHeThong in 'C:\KLTN\HDKhoaLuanK2021\UHeThong.pas',
+  ui_login in 'ui_login.pas' {TTFormLG};
+
+{$R *.res}
+
+var
+  LoginForm: TTformLG;
+  IsAdmin: Boolean;
+  LoggedMaSV: string;
+  LoggedRole: string;
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+
+  IsAdmin := False;
+  LoggedMaSV := '';
+  LoggedRole := '';
+
+  LoginForm := TTformLG.Create(nil);
+  try
+    LoginForm.IsAdmin := @IsAdmin;
+    LoginForm.LoggedMaSV := @LoggedMaSV;
+    LoginForm.LoggedRole := @LoggedRole;
+
+    if LoginForm.ShowModal = mrOk then
+    begin
+      Form1 := TForm1.CreateWithLogin(Application, IsAdmin, LoggedMaSV, LoggedRole);
+      Application.CreateForm(TForm1, Form1);  // Gọi lại để gắn MainForm nội bộ
+      Form1.Show;                             // Không cần gán MainForm bằng tay
+      Application.Run;                        // Chạy luôn
+    end
+    else
+      Application.Terminate;
+  finally
+    LoginForm.Free;
+  end;
+end.
+

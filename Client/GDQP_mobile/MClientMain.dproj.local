@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/04/16 01:07:31.000.099,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2025/04/16 01:08:05.000.896,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\GDQP_mobile\MbClient.pas</Transaction>
+    <Transaction>2025/04/16 01:08:05.000.896,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\GDQP_mobile\MbClient.fmx</Transaction>
+    <Transaction>2025/04/16 01:13:35.000.598,=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\GDQP_mobile\PClientmb.pas</Transaction>
+    <Transaction>2025/04/16 01:17:43.000.421,C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Admin\Documents\Embarcadero\Studio\Projects\Client\GDQP_mobile\MClientMain.dproj</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>

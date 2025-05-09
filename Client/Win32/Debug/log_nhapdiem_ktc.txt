@@ -1,0 +1,7 @@
+
+[19/04/2025 16:12:13] admin cập nhật: Mã SV=21103109 | Lớp=211031 Công nghệ thông tin K21A (9.2.10,Chiều) | Tên HP=Cấu trúc rời rạc (2.0/0.0) | Điểm cũ=3.4 | Điểm mới=10 | US1='TMTri' | KeHoachID=50425
+[19/04/2025 16:12:40] admin cập nhật: Mã SV=21103109 | Lớp=211031 Công nghệ thông tin K21A (9.2.10,Chiều) | Tên HP=Cấu trúc rời rạc (2.0/0.0) | Điểm cũ=10 | Điểm mới=3.4 | US1='TMTri' | KeHoachID=50425
+[19/04/2025 16:12:50] admin cập nhật: Mã SV=21103112 | Lớp=211031 Công nghệ thông tin K21A (9.2.10,Chiều) | Tên HP=Cấu trúc rời rạc (2.0/0.0) | Điểm cũ=1.5 | Điểm mới=10 | US1='TMTri' | KeHoachID=50425
+[19/04/2025 16:13:03] admin cập nhật: Mã SV=21103112 | Lớp=211031 Công nghệ thông tin K21A (9.2.10,Chiều) | Tên HP=Cấu trúc rời rạc (2.0/0.0) | Điểm cũ=10 | Điểm mới=1.5 | US1='TMTri' | KeHoachID=50425
+[19/04/2025 16:13:16] admin cập nhật: Mã SV=21103112 | Lớp=211031 Công nghệ thông tin K21A (9.2.10,Chiều) | Tên HP=Cấu trúc rời rạc (2.0/0.0) | Điểm cũ=1.5 | Điểm mới=10 | US1='TMTri' | KeHoachID=50425
+[19/04/2025 16:13:36] admin cập nhật: Mã SV=21103112 | Lớp=211031 Công nghệ thông tin K21A (9.2.10,Chiều) | Tên HP=Cấu trúc rời rạc (2.0/0.0) | Điểm cũ=10 | Điểm mới=1.5 | US1='TMTri' | KeHoachID=50425

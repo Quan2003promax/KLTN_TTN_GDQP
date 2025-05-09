@@ -1,0 +1,3 @@
+[19/04/2025 15:05:16] gvbp cập nhật: MaSV=20103026 | BoPhan=10 | USBP='TruongAnhQuan' | KeHoachID=64369
+[19/04/2025 15:05:33] gvbp cập nhật: MaSV=20103119 | BoPhan=10 | USBP=NULL | KeHoachID=64369
+[19/04/2025 15:05:39] gvbp cập nhật: MaSV=20103119 | BoPhan=10 | USBP='TruongAnhQuan' | KeHoachID=64369

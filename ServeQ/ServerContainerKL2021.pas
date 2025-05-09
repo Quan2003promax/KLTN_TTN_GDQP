@@ -1,0 +1,71 @@
+﻿unit ServerContainerKL2021;
+
+interface
+
+uses System.SysUtils, System.Classes,
+  Datasnap.DSTCPServerTransport,
+  Datasnap.DSServer, Datasnap.DSCommonServer,
+  IPPeerServer, IPPeerAPI, Datasnap.DSAuth,Variants;
+
+type
+  TServerContainer1 = class(TDataModule)
+    DSServer1: TDSServer;
+    DSTCPServerTransport1: TDSTCPServerTransport;
+    DSAuthenticationManager1: TDSAuthenticationManager;
+    DSServerClass1: TDSServerClass;
+    procedure DSServerClass1GetClass(DSServerClass: TDSServerClass;
+      var PersistentClass: TPersistentClass);
+    procedure DSAuthenticationManager1UserAuthorize(Sender: TObject;
+      EventObject: TDSAuthorizeEventObject; var valid: Boolean);
+    procedure DSAuthenticationManager1UserAuthenticate(Sender: TObject;
+      const Protocol, Context, User, Password: string; var valid: Boolean;
+      UserRoles: TStrings);
+    
+  private
+    { Private declarations }
+  public
+  end;
+
+var
+  ServerContainer1: TServerContainer1;
+
+implementation
+
+
+{$R *.dfm}
+
+uses
+  ServerMethodsKL2021;
+
+
+procedure TServerContainer1.DSServerClass1GetClass(
+  DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
+begin
+  PersistentClass := ServerMethodsKL2021.TServerMethods1;
+end;
+
+procedure TServerContainer1.DSAuthenticationManager1UserAuthenticate(
+  Sender: TObject; const Protocol, Context, User, Password: string;
+  var valid: Boolean; UserRoles: TStrings);
+begin
+  { TODO : Validate the client user and password.
+    If role-based authorization is needed, add role names to the UserRoles parameter  }
+  if (User='UserKL2021') and (Password='PassKL2021') then
+    valid := True
+  else
+    valid := False;
+end;
+
+procedure TServerContainer1.DSAuthenticationManager1UserAuthorize(
+  Sender: TObject; EventObject: TDSAuthorizeEventObject;
+  var valid: Boolean);
+begin
+  { TODO : Authorize a user to execute a method.
+    Use values from EventObject such as UserName, UserRoles, AuthorizedRoles and DeniedRoles.
+    Use DSAuthenticationManager1.Roles to define Authorized and Denied roles
+    for particular server methods. }
+  valid := True;
+end;
+
+end.
+
